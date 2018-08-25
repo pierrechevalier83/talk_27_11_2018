@@ -21,13 +21,16 @@
       body {
         font-family: 'Volkorn';
         color: black;
+        max-width: 90%;
       }
       h1 {
         font-family: 'Halis Round';
         color: #333333;
+        max-width: 90%;
       }
       h2, h3 {
         font-family: 'Campton';
+        max-width: 90%;
       }
       .remark-code, .remark-inline-code {
         font-family: 'Hack';
@@ -35,18 +38,29 @@
       }
       .white_text {
         color: white;
+        max-width: 90%;
       }
       .white_text h1 {
         color: #f5f4f2;
+        max-width: 90%;
       }
       .remark-code-line-highlighted {
          background-color: #373832;
+      }
+      .remark-code-span-highlighted {
+         background-color: #f92672;
       }
       .fitted-pic img {
         height: auto;
         width: auto;
         max-height: 400px;
         max-width: 90%;
+      }
+      .small-pic img {
+        height: auto;
+        width: auto;
+        max-height: 200px;
+        max-width: 350px;
       }
       .logo img {
         height: auto;
@@ -120,6 +134,22 @@ layout: true
 name: birds
 template: textures
 background-image: url("assets/images/bird_panel_1.svg")
+background-color: #f5f4f2
+.logo[![logo](assets/images/logo.svg)]<br>
+
+---
+layout: true
+name: birds_2
+template: textures
+background-image: url("assets/images/bird_panel_2.svg")
+background-color: #f5f4f2
+.logo[![logo](assets/images/logo.svg)]<br>
+
+---
+layout: true
+name: birds_3
+template: textures
+background-image: url("assets/images/bird_panel_3.svg")
 background-color: #f5f4f2
 .logo[![logo](assets/images/logo.svg)]<br>
 
@@ -204,8 +234,8 @@ class:center
 
 ---
 template: title
-.logo[![cryptonomy](/home/pierrec/Pictures/cryptonomy.jpg)]
-.logo.right[![rise_logo](/home/pierrec/Pictures/rise_logo)]
+.logo[![cryptonomy](assets/images/cryptonomy.jpg)]
+.logo.right[![rise_logo](assets/images/rise_logo)]
 <br><br>
 # SAFE Network London
 ## PARSEC:
@@ -219,17 +249,325 @@ template: sea
 # Agenda
 --
 count: false
-## Do we really need this?
+## Routing
 --
 count: false
-## How does it work?
+## The need for consensus
+--
+count: false
+## PARSEC
 --
 count: false
 ## What's next?
 ---
+template: birds
+
+## Routing
+
+The **brain** of the SAFE Network
+
+--
+count: false
+
+### What it doesn't do
+
+--
+count: false
+- Connect computers to form a p2p network
+???
+- Crust
+--
+count: false
+
+- Authenticate joining computers
+???
+- Authenticator
+--
+count: false
+
+- Encrypt data
+???
+- Self encryption
+
+--
+count: false
+
+- Directly handle how data is stored
+???
+- Vaults
+
+--
+count: false
+
+- Provide an API for developing applications 
+???
+- Safe client libs
+
+--
+count: false
+
+- Conform to semantic web standards 
+???
+- RDF/SOLID integration
+--
+count: false
+
+- Coffee 
+???
+- Would be a productivity gain
+---
+template:birds_2
+## Routing
+
+### What it does
+--
+count: false
+
+- Partitions the network into `sections`
+--
+count: false
+
+- Decides which `nodes` belong in which `sections`
+--
+count: false
+
+- Assigns a `close group` for each data
+--
+count: false
+
+- Allows secure communications across sections
+--
+count: false
+
+- Enables consensus within a section
+---
+template:birds_3
+## Routing
+
+### How it does it
+--
+count: false
+
+- Pretend everything is a 256 bit int
+---
+template:birds_3
+count: false
+## Routing
+
+### How it does it
+
+- Pretend **everything** is a 256 bit int
+--
+count: false
+
+ - Computers
+--
+count: false
+
+ - Data
+---
+template:birds_3
+## Routing
+
+### How it does it
+
+- Pretend everything is a **256 bit int**
+--
+count: false
+```
+Between 0 and 115792089237316195423570985008687907853269984665640564039457584007913129639935
+```
+--
+count: false
+ - 2<sup>256</sup>-1
+--
+count: false
+
+ - `10^77`
+--
+count: false
+
+ - 115 quattuorvigintillion and change
+--
+count: false
+
+  - .1% of the number of atoms in the universe
+--
+count: false
+---
+template:birds_3
+## Routing
+
+### How it does it
+
+- Pretend everything is a 256 bit int
+--
+count: false
+
+- Reduce all problems to simple maths
+--
+count: false
+
+ - Example: which section should this node join?
+```
+node id: 11010010001111100...
+```
+---
+template:birds_3
+count: false
+## Routing
+
+### How it does it
+
+- Pretend everything is a 256 bit int
+
+- Reduce all problems to simple maths
+
+ - Example: which section should this node join?
+```
+node id: 11010010001111100...
+```
+.center[
+|      |       |       |       |       |       |       |       |
+| :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|      |       | Left  |       |       | Right |       |       |
+|      |       | 0     |       |       | 1     |       |       |
+|      | Left  | Right |       |       | Left  | Right |       |
+|      | 00    | 01    |       |       | 10    | 11    |       |
+| Left | Right | Left  | Right | Left  | Right | Left  | Right |
+| 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
+]
+
+---
+template:birds_3
+count: false
+## Routing
+
+### How it does it
+
+- Pretend everything is a 256 bit int
+
+- Reduce all problems to simple maths
+
+ - Example: which section should this node join?
+```
+node id: `1`1010010001111100...
+```
+.center[
+|      |       |       |       |       |       |       |       |
+| :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|      |       | Left  |       |       | **Right** |   |       |
+|      |       | 0     |       |       | **1** |       |       |
+|      | Left  | Right |       |       | Left  | Right |       |
+|      | 00    | 01    |       |       | 10    | 11    |       |
+| Left | Right | Left  | Right | Left  | Right | Left  | Right |
+| 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
+]
+---
+template:birds_3
+count: false
+## Routing
+
+### How it does it
+
+- Pretend everything is a 256 bit int
+
+- Reduce all problems to simple maths
+
+ - Example: which section should this node join?
+```
+node id: 1`1`010010001111100...
+```
+.center[
+|      |       |       |       |       |       |       |       |
+| :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|      |       | Left  |       |       | **Right** |   |       |
+|      |       | 0     |       |       | **1** |       |       |
+|      | Left  | Right |       |       | Left  | **Right** |   |
+|      | 00    | 01    |       |       | 10    | **11** |      |
+| Left | Right | Left  | Right | Left  | Right | Left  | Right |
+| 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
+]
+---
+template:birds_3
+count: false
+## Routing
+
+### How it does it
+
+- Pretend everything is a 256 bit int
+
+- Reduce all problems to simple maths
+
+ - Example: which section should this node join?
+```
+node id: 11`0`10010001111100...
+```
+.center[
+|      |       |       |       |       |       |       |       |
+| :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+|      |       | Left  |       |       | **Right** |   |       |
+|      |       | 0     |       |       | **1** |       |       |
+|      | Left  | Right |       |       | Left  | **Right** |   |
+|      | 00    | 01    |       |       | 10    | **11** |      |
+| Left | Right | Left  | Right | Left  | Right | **Left** | Right |
+| 000  | 001   | 010   | 011   | 100   | 101   | **110**   | 111   |
+]
+---
+template:birds_3
+count: false
+## Routing
+
+### How it does it
+
+- Pretend everything is a 256 bit int
+
+- Reduce all problems to simple maths
+--
+count: false
+
+ - Example: who should store this data?
+```
+data id: 11010010001111100...
+```
+--
+count: false
+.center[The `GROUP_SIZE` closest nodes in xor distance]
+???
+xor space has the desirable property that distances are unique
+---
+template:birds_3
+## Routing
+
+### How it does it
+
+- Pretend everything is a 256 bit int
+
+- Reduce all problems to simple maths
+--
+count: false
+
+ - Example: how do members of a section agree<br>
+   on the order in which things happen?
+--
+count: false
+
+.center.small-pic[![parsec](assets/images/byzantine_army.jpg)]
+???
+Byzantine Generals problem
+---
+template: fields
+count: false
+## The quest for consensus
+### The Byzantine Generals Problem
+.fitted-pic[![byzantine](assets/images/byzantine_army.jpg)]
+???
+TODO: explain the problem
+
+---
 template: the_end
-.logo[![cryptonomy](/home/pierrec/Pictures/cryptonomy.jpg)]
-.logo.right[![rise_logo](/home/pierrec/Pictures/rise_logo)]
+.logo[![cryptonomy](assets/images/cryptonomy.jpg)]
+.logo.right[![rise_logo](assets/images/rise_logo)]
 # Thank you!
 
     </textarea>
@@ -239,6 +577,7 @@ template: the_end
       var slideshow = remark.create({
         highlightLanguage: 'rust',
         highlightLines: 'true',
+        highlightSpans: 'true',
         highlightStyle: 'monokai'});
     </script>
   </body>
