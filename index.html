@@ -53,7 +53,7 @@
       .fitted-pic img {
         height: auto;
         width: auto;
-        max-height: 400px;
+        max-height: 360px;
         max-width: 90%;
       }
       .small-pic img {
@@ -61,6 +61,12 @@
         width: auto;
         max-height: 200px;
         max-width: 350px;
+      }
+      .tiny-pic img {
+        height: auto;
+        width: auto;
+        max-height: 35px;
+        max-width: 35px;
       }
       .logo img {
         height: auto;
@@ -155,10 +161,45 @@ background-color: #f5f4f2
 
 ---
 layout: true
+name: birds_4
+template: textures
+background-image: url("assets/images/bird_panel_4.svg")
+background-color: #f5f4f2
+.logo[![logo](assets/images/logo.svg)]<br>
+
+---
+layout: true
 name: fields
 class: white_text
 template: textures
 background-image: url("assets/images/texture_5.png")
+background-color: #496c7d
+.logo[![logo](assets/images/logo_light.svg)]<br>
+
+---
+layout: true
+name: fields_2
+class: white_text
+template: textures
+background-image: url("assets/images/texture_6.png")
+background-color: #496c7d
+.logo[![logo](assets/images/logo_light.svg)]<br>
+
+---
+layout: true
+name: fields_3
+class: white_text
+template: textures
+background-image: url("assets/images/texture_7.png")
+background-color: #496c7d
+.logo[![logo](assets/images/logo_light.svg)]<br>
+
+---
+layout: true
+name: fields_4
+class: white_text
+template: textures
+background-image: url("assets/images/texture_8.png")
 background-color: #496c7d
 .logo[![logo](assets/images/logo_light.svg)]<br>
 
@@ -168,6 +209,33 @@ name:sparks
 class: white_text
 template: textures
 background-image: url("assets/images/texture_9.png")
+background-color: #f0572a
+.logo[![logo](assets/images/logo_light.svg)]<br>
+
+---
+layout:true
+name:sparks_2
+class: white_text
+template: textures
+background-image: url("assets/images/texture_10.png")
+background-color: #f0572a
+.logo[![logo](assets/images/logo_light.svg)]<br>
+
+---
+layout:true
+name:sparks_3
+class: white_text
+template: textures
+background-image: url("assets/images/spark-texture-1.jpg")
+background-color: #f0572a
+.logo[![logo](assets/images/logo_light.svg)]<br>
+
+---
+layout:true
+name:sparks_4
+class: white_text
+template: textures
+background-image: url("assets/images/spark-texture-3.jpg")
 background-color: #f0572a
 .logo[![logo](assets/images/logo_light.svg)]<br>
 
@@ -240,9 +308,10 @@ template: title
 # SAFE Network London
 ## PARSEC:
 ## It's cool tech, yo!
-<br><br>
 .right[August 29th 2018]
 .right[Pierre Chevalier]
+.right.tiny-pic[![maidsafe](assets/images/maidsafe_logo.png)]
+
 ---
 template: sea
 
@@ -252,7 +321,7 @@ count: false
 ## Routing
 --
 count: false
-## The need for consensus
+## The quest for consensus
 --
 count: false
 ## PARSEC
@@ -287,6 +356,7 @@ count: false
 
 - Encrypt data
 ???
+- Safe crypto
 - Self encryption
 
 --
@@ -366,7 +436,7 @@ count: false
 
  - Data
 ---
-template:birds_3
+template:birds_4
 ## Routing
 
 ### How it does it
@@ -383,19 +453,24 @@ count: false
 --
 count: false
 
- - `10^77`
+ - ~10<sup>77</sup>
 --
 count: false
 
- - 115 quattuorvigintillion and change
+ - ~115 quattuorvigintillion
 --
 count: false
 
-  - .1% of the number of atoms in the universe
+  - ~.1% of the number of atoms in the universe
 --
 count: false
+
+  -  can be represented in binary
+```
+0101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001
+```
 ---
-template:birds_3
+template:birds
 ## Routing
 
 ### How it does it
@@ -413,7 +488,7 @@ count: false
 node id: 11010010001111100...
 ```
 ---
-template:birds_3
+template:birds
 count: false
 ## Routing
 
@@ -439,7 +514,7 @@ node id: 11010010001111100...
 ]
 
 ---
-template:birds_3
+template:birds
 count: false
 ## Routing
 
@@ -464,7 +539,7 @@ node id: `1`1010010001111100...
 | 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
 ]
 ---
-template:birds_3
+template:birds
 count: false
 ## Routing
 
@@ -489,7 +564,7 @@ node id: 1`1`010010001111100...
 | 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
 ]
 ---
-template:birds_3
+template:birds
 count: false
 ## Routing
 
@@ -514,7 +589,7 @@ node id: 11`0`10010001111100...
 | 000  | 001   | 010   | 011   | 100   | 101   | **110**   | 111   |
 ]
 ---
-template:birds_3
+template:birds_2
 count: false
 ## Routing
 
@@ -536,7 +611,7 @@ count: false
 ???
 xor space has the desirable property that distances are unique
 ---
-template:birds_3
+template:birds
 ## Routing
 
 ### How it does it
@@ -557,12 +632,285 @@ count: false
 Byzantine Generals problem
 ---
 template: fields
-count: false
 ## The quest for consensus
 ### The Byzantine Generals Problem
 .fitted-pic[![byzantine](assets/images/byzantine_army.jpg)]
 ???
-TODO: explain the problem
+In 1982, Leslie Lamport et all described the following mathematical problem:
+
+A group of generals of the byzantine army are camped with their troops around an ennemy city. Communicating only by messenger, the generals must agree upon a common battle plan. However, one or more of them may be traitors trying to confuse the others.
+
+The problem is to find an algorithm to ensure that the loyal generals will reach agreement.
+
+This problem seems deceptively simple, but it has been extensively studied in the last 20 years and better and better solutions keep coming up.
+
+---
+template: fields_2
+## The quest for consensus
+### Our needs
+####.center[_]
+--
+count: false
+
+- Asynchronous
+???
+We're speaking of a real world network hosted on people's computers.
+We cannot make assumptions on the time it takes for a node to respond.
+--
+count: false
+
+- Scalable
+???
+Optimal complexity: O(N*log(N))
+--
+count: false
+
+- Permission-less
+???
+Can support dynamic membership: nodes die
+--
+count: false
+
+- Open Source
+???
+GPL-v3
+Necessary to fit within our ethos
+--
+count: false
+
+- Simple
+???
+Simplicity is a property that is extremely underrated.
+If an algorithm is simple, it improves the security of the implementation
+as anyone can reason about it and see bugs.
+
+---
+template: fields_3
+## The quest for consensus
+### State of the art
+#### Blockchain (2008)
+
+* ~~Asynchronous~~
+
+* ~~Scalable~~
+
+* Permission-less
+
+* Open Source
+
+* Simple
+
+---
+template: fields_4
+## The quest for consensus
+### State of the art
+#### HashGraph (2016)
+
+* Asynchronous (*)
+
+* Scalable
+
+* Permission-less
+
+* ~~Open Source~~
+
+* Simple
+
+---
+template: fields
+## The quest for consensus
+### State of the art
+#### Honey Badger BFT (2016)
+
+* Asynchronous (*)
+
+* Scalable
+
+* Permission-less (*)
+
+* Open Source
+
+* ~~Simple~~
+
+---
+template: fields_2
+## The quest for consensus
+### State of the art
+#### Avalanche (2018)
+
+* ~~Asynchronous~~
+
+* Scalable
+
+* Permission-less
+
+* Open Source
+
+* Simple
+
+---
+template: fields_3
+## The quest for consensus
+.fitted-pic[![PARSEC](assets/images/falcon.png)]
+
+???
+So we came to realize that the state of the art wasn't enough and that we would need to come up with our own solution if we wanted a protocol to fit all our needs.
+
+---
+template:sparks
+## PARSEC
+### Features
+.fitted-pic[![PARSEC](assets/images/spoiler_alert.png)]
+
+???
+Now, how you solve a complex maths problem is by breaking it down into simpler maths problems and solving these.
+
+Even better if someone else already solved these smaller maths problems for you so you can save some time.
+
+In this section, I'll explain some of these smaller maths problems for the case of consensus.
+
+It's gonna be really boring, so I thought I would reveal the features we gain from this exercise so hopefully that keeps you motivated to listen to my monotone lecture :) 
+---
+template:sparks
+count: false
+## PARSEC
+### Features
+???
+So with PARSEC, we achieved to find a solution to the Byzantine Generals Problem that is:
+--
+count: false
+
+* Asynchronous ✓ (*)
+???
+Almost asynchronous:
+- Every step of the algorithm is fully asynchronous with one exception: the concrete coin
+- In that step, we can't claim we are fully asynchronous as we don't meet the technical theoretical requirements; although in practice, it's very unlikely to make a difference
+- The synchrony assumption we have is still less than that of any competing protocol that scales like ours does
+- We are currently focused on implementing the algorithm we already have as this is necessary to get the SAFE Network off the ground; but we think we may be able to make that last step fully asynchronous with no asterisque with a little bit more research
+--
+count: false
+
+* Scalable ✓
+???
+No compromise: PARSEC can reach consensus in O(N*log(N)) which is at the theoretical limit for the number of nodes.
+---
+template:sparks
+count: false
+## PARSEC
+### Features
+
+* Asynchronous ✓ (*)
+
+* Scalable ✓
+
+* Permission-less ✓
+???
+The algorithm can operate in a completely permission-less setting.
+The only requirement is that less than a third of the participants at any time are malicious, which we guarentee in the SAFE Network with a number of Sybil protection measures such as node ageing.
+Nodes can join a section and leave it without affecting consensus and without requiring any syncrhonous step.
+--
+count: false
+
+* Open Source ✓
+???
+Not only in license, GPL-V3 which is Free software, but also in our ethos.
+We have already received 2 contributions to the PARSEC github and feedback on the whitepaper from members of the forum and even from Vlad Zamfir from Ethereum.
+--
+count: false
+
+* Simple ✓
+???
+In the litterature, you find all kinds of fancy algorithms to solve the Byzantine Generals Problem or parts of it; and most of them aren't even efficient.
+Our algorithm only uses simple ideas and composes them to make an elegant solution.
+
+Not to make it sound like we're some kinds of geniuses: the two most powerful, simple and elegant ideas behind PARSEC are the way we solve binary consensus and the concrete coin idea. Both ideas were shameless-ly ripped off from existing papers :D
+---
+template:sparks_2
+## PARSEC
+### In a nutshell
+
+--
+count: false
+.center.fitted-pic[![PARSEC overview](assets/images/parsec_overview.png)]
+???
+- We call a group that contains over two thirds of the nodes a supermajority
+- Nodes constantly **gossip** to each other
+- They record information gossiped to them as **gossip events** inside a **gossip graph**
+- **gossip events** in a gossip graph may have special relationships such as **seeing** each other or **strongly seeing** each other
+- When a node notices that something happens in the network, they **vote** to inform other nodes of their observation
+- The vote is conveyed to other nodes through **gossip**
+- **gossip events** that contain votes and have been **strongly seen** by a **supermajority** of nodes are **interesting events**.
+- They are said to carry **valid blocks** 
+- TODO
+
+---
+template:sparks_3
+## PARSEC
+### Gossip
+.center.fitted-pic[![PARSEC](assets/images/gossip.jpg)]
+
+---
+template:sparks_4
+## PARSEC
+### TODO
+---
+template:small_dots
+## What's next?
+--
+count: false
+
+- Implementation
+--
+count: false
+
+  - Dynamic membership
+???
+Ongoing
+--
+count: false
+
+  - Integration into routing layer
+--
+count: false
+
+- Paper improvements
+--
+count: false
+
+  - Incorporate community feedback
+--
+count: false
+
+  - Improve asynchrony
+--
+count: false
+
+- Upcoming London events
+--
+count: false
+
+  - Work On Blockchain (Sept. 11)
+???
+Deep dive at Kings College London
+2 hours including grilling/Q&A session
+With Bart Kaminski
+
+https://www.eventbrite.com/e/an-exploration-of-the-safe-network-and-its-open-consensus-protocol-parsec-tickets-48908375267
+--
+count: false
+
+  - Rust London Meetup (End of Sept.)
+???
+For a talk about how the entire rust ecosystem has been supporting us when implementing PARSEC
+
+https://www.meetup.com/Rust-London-User-Group/
+--
+count: false
+
+  - Mozfest (?) (Oct. 26-28)
+???
+Taking back the web! Set up your first SAFE website in under a minute
+https://github.com/MozillaFestival/mozfest-program-2018/issues/221
 
 ---
 template: the_end
@@ -570,6 +918,12 @@ template: the_end
 .logo.right[![rise_logo](assets/images/rise_logo)]
 # Thank you!
 
+???
+- Thanks to Oscar from cryptonomy for basically organising the entire meetup
+
+- Thanks to Rise for hosting us
+
+- Thank you all for listening
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
