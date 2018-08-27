@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Vollkorn);
-      @import url(https://fonts.googleapis.com/css?family=Hack);
+      @import url(https://fonts.googleapis.com/css?family=Monaco);
       @font-face {
           font-family: Halis Round;
           font-style: normal;
@@ -23,24 +23,24 @@
         color: black;
         max-width: 90%;
       }
-      h1 {
+      h1, h2 {
         font-family: 'Halis Round';
         color: #333333;
         max-width: 90%;
       }
-      h2, h3 {
+      h3 {
         font-family: 'Campton';
         max-width: 90%;
       }
       .remark-code, .remark-inline-code {
-        font-family: 'Hack';
+        font-family: 'Monaco';
         width: 90%;
       }
       .white_text {
         color: white;
         max-width: 90%;
       }
-      .white_text h1 {
+      .white_text h1, h2 {
         color: #f5f4f2;
         max-width: 90%;
       }
@@ -48,12 +48,12 @@
          background-color: #373832;
       }
       .remark-code-span-highlighted {
-         background-color: #f92672;
+         background-color: #f0572a;
       }
       .fitted-pic img {
         height: auto;
         width: auto;
-        max-height: 360px;
+        max-height: 340px;
         max-width: 90%;
       }
       .small-pic img {
@@ -73,9 +73,9 @@
         width: auto;
         max-height: 35px;
         position: absolute;
-        top: 5%;
+        top: 8%;
+        left: 1.7%;
       }
-
     </style>
   </head>
   <body>
@@ -91,8 +91,23 @@ class:center
 ---
 layout: true
 name: textures
-background-position: right
-background-size: 12% 100%
+background-position: right bottom, 87.5% top, 75% bottom, 62.5% bottom, right top
+background-size: 11.1% 85%, 11.1% 15%, 11.1% 33%, 11.1% 6%, 11.1% 15%  
+background-repeat: repeat;
+
+---
+layout: true
+name: textures_2
+background-position: right top, 87.5% bottom, 62.5% top, right bottom, 50% top
+background-size: 11.1% 56%, 11.1% 44%, 11.1% 16.25%, 11.1% 44%, 11.1% 6%  
+background-repeat: repeat;
+
+---
+layout: true
+name: textures_3
+background-repeat: no-repeat
+background-position: right top, 87.5% top, 75% bottom, left top, 12.5% bottom
+background-size: 11.1% 100%, 11.1% 100%, 11.1% 16%, 11.1% 6%, 22.2% 6% 
 
 ---
 layout: true
@@ -131,113 +146,134 @@ background-color: #1f3a80
 layout: true
 name: sea
 template: textures
-background-image: url("assets/images/texture_1.png")
+background-image: url("assets/images/texture_1.png"), url("assets/images/texture_3.png"), url("assets/images/texture_2.png"), url("assets/images/yellow.png"), url("assets/images/yellow.png")
+background-color: #f5f4f2
+<br><br><br>
+
+---
+layout: true
+name: sea_2
+template: textures_2
+background-image: url("assets/images/texture_1.png"), url("assets/images/texture_2.png"), url("assets/images/texture_3.png"), url("assets/images/white.png"), url("assets/images/white.png")
 background-color: #f2e14c
-.logo[![logo](assets/images/logo.svg)]<br>
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
 
 ---
 layout: true
 name: birds
-template: textures
-background-image: url("assets/images/bird_panel_1.svg")
+template: textures_3
+background-image: url("assets/images/bird_panel_4.svg"), url("assets/images/bird_panel_1.svg"), url("assets/images/bird_panel_2.svg"), url("assets/images/white.png"), url("assets/images/white.png")
 background-color: #f5f4f2
-.logo[![logo](assets/images/logo.svg)]<br>
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
 
 ---
 layout: true
 name: birds_2
 template: textures
-background-image: url("assets/images/bird_panel_2.svg")
-background-color: #f5f4f2
-.logo[![logo](assets/images/logo.svg)]<br>
+background-image: url("assets/images/bird_panel_4.svg"), url("assets/images/bird_panel_1.svg"), url("assets/images/bird_panel_2.svg"), url("assets/images/light_grey.svg"), url("assets/images/light_grey.png")
+background-color: #ffffff
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
 
 ---
 layout: true
 name: birds_3
-template: textures
-background-image: url("assets/images/bird_panel_3.svg")
+template: textures_2
+background-image: url("assets/images/bird_panel_4.svg"), url("assets/images/bird_panel_1.svg"), url("assets/images/bird_panel_2.svg"), url("assets/images/white.png"), url("assets/images/white.png")
 background-color: #f5f4f2
-.logo[![logo](assets/images/logo.svg)]<br>
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
 
 ---
 layout: true
 name: birds_4
 template: textures
-background-image: url("assets/images/bird_panel_4.svg")
-background-color: #f5f4f2
-.logo[![logo](assets/images/logo.svg)]<br>
+background-image: url("assets/images/bird_panel_4.svg"), url("assets/images/bird_panel_1.svg"), url("assets/images/bird_panel_2.svg"), url("assets/images/light_grey.svg"), url("assets/images/light_grey.png")
+background-color: #ffffff
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
 
 ---
 layout: true
 name: fields
 class: white_text
 template: textures
-background-image: url("assets/images/texture_5.png")
+background-image: url("assets/images/texture_5.png"), url("assets/images/texture_6.png"), url("assets/images/texture_7.png"), url("assets/images/yellow.png"), url("assets/images/light_grey.png")
 background-color: #496c7d
-.logo[![logo](assets/images/logo_light.svg)]<br>
+.logo[![logo](assets/images/logo_light.svg)]
+<br><br><br>
 
 ---
 layout: true
 name: fields_2
 class: white_text
-template: textures
-background-image: url("assets/images/texture_6.png")
+template: textures_2
+background-image: url("assets/images/texture_5.png"), url("assets/images/texture_6.png"), url("assets/images/texture_7.png"), url("assets/images/red.png"), url("assets/images/yellow.png")
 background-color: #496c7d
-.logo[![logo](assets/images/logo_light.svg)]<br>
+.logo[![logo](assets/images/logo_light.svg)]
+<br><br><br>
 
 ---
 layout: true
 name: fields_3
 class: white_text
-template: textures
-background-image: url("assets/images/texture_7.png")
+template: textures_3
+background-image: url("assets/images/texture_5.png"), url("assets/images/texture_6.png"), url("assets/images/texture_7.png"), url("assets/images/light_grey.png"), url("assets/images/yellow.png")
 background-color: #496c7d
-.logo[![logo](assets/images/logo_light.svg)]<br>
+.logo[![logo](assets/images/logo_light.svg)]
+<br><br><br>
 
 ---
 layout: true
 name: fields_4
 class: white_text
 template: textures
-background-image: url("assets/images/texture_8.png")
+background-image: url("assets/images/texture_7.png"), url("assets/images/texture_5.png"), url("assets/images/texture_6.png"), url("assets/images/light_grey.png"), url("assets/images/yellow.png")
 background-color: #496c7d
-.logo[![logo](assets/images/logo_light.svg)]<br>
+.logo[![logo](assets/images/logo_light.svg)]
+<br><br><br>
 
 ---
 layout:true
 name:sparks
 class: white_text
 template: textures
-background-image: url("assets/images/texture_9.png")
+background-image: url("assets/images/texture_9.png"), url("assets/images/texture_10.png"), url("assets/images/spark-texture-1.jpg"), url("assets/images/light_grey.png"), url("assets/images/yellow.png")
 background-color: #f0572a
-.logo[![logo](assets/images/logo_light.svg)]<br>
+.logo[![logo](assets/images/logo_light.svg)]
+<br><br><br>
 
 ---
 layout:true
 name:sparks_2
 class: white_text
-template: textures
-background-image: url("assets/images/texture_10.png")
+template: textures_2
+background-image: url("assets/images/spark-texture-1.jpg"), url("assets/images/spark-texture-3.jpg"), url("assets/images/texture_10.png"), url("assets/images/light_grey.png"), url("assets/images/yellow.png")
 background-color: #f0572a
-.logo[![logo](assets/images/logo_light.svg)]<br>
+.logo[![logo](assets/images/logo_light.svg)]
+<br><br><br>
 
 ---
 layout:true
 name:sparks_3
 class: white_text
-template: textures
-background-image: url("assets/images/spark-texture-1.jpg")
+template: textures_3
+background-image: url("assets/images/texture_9.png"), url("assets/images/texture_10.png"), url("assets/images/spark-texture-1.jpg"), url("assets/images/light_grey.png"), url("assets/images/yellow.png")
 background-color: #f0572a
-.logo[![logo](assets/images/logo_light.svg)]<br>
+.logo[![logo](assets/images/logo_light.svg)]
+<br><br><br>
 
 ---
 layout:true
 name:sparks_4
 class: white_text
 template: textures
-background-image: url("assets/images/spark-texture-3.jpg")
+background-image: url("assets/images/spark-texture-1.jpg"), url("assets/images/spark-texture-3.jpg"), url("assets/images/texture_10.png"), url("assets/images/light_grey.png"), url("assets/images/yellow.png")
 background-color: #f0572a
-.logo[![logo](assets/images/logo_light.svg)]<br>
+.logo[![logo](assets/images/logo_light.svg)]
+<br><br><br>
 
 ---
 layout: true
@@ -253,7 +289,8 @@ class: white_text
 template: art
 background-image: url("assets/images/hiw_pattern_1.svg")
 background-color: #1f3a80
-.logo[![logo](assets/images/logo_light.svg)]<br>
+.logo[![logo](assets/images/logo_light.svg)]
+<br><br><br>
 
 ---
 layout:true
@@ -261,7 +298,8 @@ name:ants
 template: art
 background-image: url("assets/images/hiw_pattern_2.svg")
 background-color: #f2e14c
-.logo[![logo](assets/images/logo.svg)]<br>
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
 
 ---
 layout:true
@@ -269,7 +307,8 @@ name:stripes
 template: art
 background-image: url("assets/images/hiw_pattern_3.svg")
 background-color: white
-.logo[![logo](assets/images/logo.svg)]<br>
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
 
 ---
 layout:true
@@ -277,7 +316,8 @@ name:rain
 template: art
 background-image: url("assets/images/hiw_pattern_4.svg")
 background-color: #f5f4f2
-.logo[![logo](assets/images/logo.svg)]<br>
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
 
 ---
 layout:true
@@ -285,7 +325,8 @@ name:rings
 template: art
 background-image: url("assets/images/hiw_pattern_5.svg")
 background-color: white
-.logo[![logo](assets/images/logo.svg)]<br>
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
 
 ---
 layout:true
@@ -297,37 +338,32 @@ background-image: url("assets/images/timeline_pattern_1.svg")
 background-color: white
 class:center
 .logo.left[![logo](assets/images/logo.svg)]
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
 
-
----
-template: title
-.logo[![cryptonomy](assets/images/cryptonomy.jpg)]
-.logo.right[![rise_logo](assets/images/rise_logo)]
-<br><br>
-# SAFE Network London
-## PARSEC:
-## It's cool tech, yo!
-.right[August 29th 2018]
-.right[Pierre Chevalier]
-.right.tiny-pic[![maidsafe](assets/images/maidsafe_logo.png)]
 
 ---
 template: sea
+# PARSEC:
+### It's cool tech, yo!
+<br><br><br>
+.small-pic[![maidsafe](assets/images/logo.svg)]
 
-# Agenda
+---
+template: sea_2
+
+## Agenda
 --
 count: false
-## Routing
+#### Routing
 --
 count: false
-## The quest for consensus
+#### The quest for consensus
 --
 count: false
-## PARSEC
+#### PARSEC
 --
 count: false
-## What's next?
+#### What's next?
 ---
 template: birds
 
@@ -347,42 +383,33 @@ count: false
 - Crust
 --
 count: false
-
 - Authenticate joining computers
 ???
 - Authenticator
 --
 count: false
-
 - Encrypt data
 ???
 - Safe crypto
 - Self encryption
-
 --
 count: false
-
 - Directly handle how data is stored
 ???
 - Vaults
-
 --
 count: false
-
 - Provide an API for developing applications 
 ???
 - Safe client libs
-
 --
 count: false
-
 - Conform to semantic web standards 
 ???
 - RDF/SOLID integration
 --
 count: false
-
-- Coffee 
+- ... 
 ???
 - Would be a productivity gain
 ---
@@ -392,23 +419,18 @@ template:birds_2
 ### What it does
 --
 count: false
-
 - Partitions the network into `sections`
 --
 count: false
-
 - Decides which `nodes` belong in which `sections`
 --
 count: false
-
 - Assigns a `close group` for each data
 --
 count: false
-
 - Allows secure communications across sections
 --
 count: false
-
 - Enables consensus within a section
 ---
 template:birds_3
@@ -427,13 +449,12 @@ count: false
 ### How it does it
 
 - Pretend **everything** is a 256 bit int
+
 --
 count: false
-
  - Computers
 --
 count: false
-
  - Data
 ---
 template:birds_4
@@ -444,28 +465,19 @@ template:birds_4
 - Pretend everything is a **256 bit int**
 --
 count: false
+
 ```
 Between 0 and 115792089237316195423570985008687907853269984665640564039457584007913129639935
 ```
---
-count: false
+???
  - 2<sup>256</sup>-1
---
-count: false
-
  - ~10<sup>77</sup>
---
-count: false
-
  - ~115 quattuorvigintillion
---
-count: false
-
   - ~.1% of the number of atoms in the universe
 --
 count: false
+can be represented in binary
 
-  -  can be represented in binary
 ```
 0101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001
 ```
@@ -474,10 +486,6 @@ template:birds
 ## Routing
 
 ### How it does it
-
-- Pretend everything is a 256 bit int
---
-count: false
 
 - Reduce all problems to simple maths
 --
@@ -491,12 +499,7 @@ node id: 11010010001111100...
 template:birds
 count: false
 ## Routing
-
 ### How it does it
-
-- Pretend everything is a 256 bit int
-
-- Reduce all problems to simple maths
 
  - Example: which section should this node join?
 ```
@@ -520,10 +523,6 @@ count: false
 
 ### How it does it
 
-- Pretend everything is a 256 bit int
-
-- Reduce all problems to simple maths
-
  - Example: which section should this node join?
 ```
 node id: `1`1010010001111100...
@@ -544,10 +543,6 @@ count: false
 ## Routing
 
 ### How it does it
-
-- Pretend everything is a 256 bit int
-
-- Reduce all problems to simple maths
 
  - Example: which section should this node join?
 ```
@@ -570,10 +565,6 @@ count: false
 
 ### How it does it
 
-- Pretend everything is a 256 bit int
-
-- Reduce all problems to simple maths
-
  - Example: which section should this node join?
 ```
 node id: 11`0`10010001111100...
@@ -590,16 +581,9 @@ node id: 11`0`10010001111100...
 ]
 ---
 template:birds_2
-count: false
 ## Routing
 
 ### How it does it
-
-- Pretend everything is a 256 bit int
-
-- Reduce all problems to simple maths
---
-count: false
 
  - Example: who should store this data?
 ```
@@ -607,7 +591,7 @@ data id: 11010010001111100...
 ```
 --
 count: false
-.center[The `GROUP_SIZE` closest nodes in xor distance]
+.center[The `GROUP_SIZE` closest<br>nodes in xor distance]
 ???
 xor space has the desirable property that distances are unique
 ---
@@ -615,12 +599,6 @@ template:birds
 ## Routing
 
 ### How it does it
-
-- Pretend everything is a 256 bit int
-
-- Reduce all problems to simple maths
---
-count: false
 
  - Example: how do members of a section agree<br>
    on the order in which things happen?
@@ -631,9 +609,8 @@ count: false
 ???
 Byzantine Generals problem
 ---
-template: fields
+template: fields_3
 ## The quest for consensus
-### The Byzantine Generals Problem
 .fitted-pic[![byzantine](assets/images/byzantine_army.jpg)]
 ???
 In 1982, Leslie Lamport et all described the following mathematical problem:
@@ -648,7 +625,7 @@ This problem seems deceptively simple, but it has been extensively studied in th
 template: fields_2
 ## The quest for consensus
 ### Our needs
-####.center[_]
+<br>
 --
 count: false
 
@@ -658,26 +635,22 @@ We're speaking of a real world network hosted on people's computers.
 We cannot make assumptions on the time it takes for a node to respond.
 --
 count: false
-
 - Scalable
 ???
 Optimal complexity: O(N*log(N))
 --
 count: false
-
 - Permission-less
 ???
 Can support dynamic membership: nodes die
 --
 count: false
-
 - Open Source
 ???
 GPL-v3
 Necessary to fit within our ethos
 --
 count: false
-
 - Simple
 ???
 Simplicity is a property that is extremely underrated.
@@ -685,51 +658,39 @@ If an algorithm is simple, it improves the security of the implementation
 as anyone can reason about it and see bugs.
 
 ---
-template: fields_3
+template: fields
 ## The quest for consensus
 ### State of the art
 #### Blockchain (2008)
 
 * ~~Asynchronous~~
-
 * ~~Scalable~~
-
 * Permission-less
-
 * Open Source
+* Simple
 
+---
+template: fields_3
+## The quest for consensus
+### State of the art
+#### HashGraph (2016)
+
+* Asynchronous (*)
+* Scalable
+* Permission-less
+* ~~Open Source~~
 * Simple
 
 ---
 template: fields_4
 ## The quest for consensus
 ### State of the art
-#### HashGraph (2016)
-
-* Asynchronous (*)
-
-* Scalable
-
-* Permission-less
-
-* ~~Open Source~~
-
-* Simple
-
----
-template: fields
-## The quest for consensus
-### State of the art
 #### Honey Badger BFT (2016)
 
 * Asynchronous (*)
-
 * Scalable
-
 * Permission-less (*)
-
 * Open Source
-
 * ~~Simple~~
 
 ---
@@ -739,17 +700,13 @@ template: fields_2
 #### Avalanche (2018)
 
 * ~~Asynchronous~~
-
 * Scalable
-
 * Permission-less
-
 * Open Source
-
 * Simple
 
 ---
-template: fields_3
+template: fields
 ## The quest for consensus
 .fitted-pic[![PARSEC](assets/images/falcon.png)]
 
@@ -759,7 +716,6 @@ So we came to realize that the state of the art wasn't enough and that we would 
 ---
 template:sparks
 ## PARSEC
-### Features
 .fitted-pic[![PARSEC](assets/images/spoiler_alert.png)]
 
 ???
@@ -789,7 +745,6 @@ Almost asynchronous:
 - We are currently focused on implementing the algorithm we already have as this is necessary to get the SAFE Network off the ground; but we think we may be able to make that last step fully asynchronous with no asterisque with a little bit more research
 --
 count: false
-
 * Scalable ✓
 ???
 No compromise: PARSEC can reach consensus in O(N*log(N)) which is at the theoretical limit for the number of nodes.
@@ -798,11 +753,8 @@ template:sparks
 count: false
 ## PARSEC
 ### Features
-
 * Asynchronous ✓ (*)
-
 * Scalable ✓
-
 * Permission-less ✓
 ???
 The algorithm can operate in a completely permission-less setting.
@@ -810,14 +762,12 @@ The only requirement is that less than a third of the participants at any time a
 Nodes can join a section and leave it without affecting consensus and without requiring any syncrhonous step.
 --
 count: false
-
 * Open Source ✓
 ???
 Not only in license, GPL-V3 which is Free software, but also in our ethos.
 We have already received 2 contributions to the PARSEC github and feedback on the whitepaper from members of the forum and even from Vlad Zamfir from Ethereum.
 --
 count: false
-
 * Simple ✓
 ???
 In the litterature, you find all kinds of fancy algorithms to solve the Byzantine Generals Problem or parts of it; and most of them aren't even efficient.
@@ -827,12 +777,10 @@ Not to make it sound like we're some kinds of geniuses: the two most powerful, s
 ---
 template:sparks_2
 ## PARSEC
+.fitted-pic[![PARSEC overview](assets/images/parsec_overview.png)]
+???
 ### In a nutshell
 
---
-count: false
-.center.fitted-pic[![PARSEC overview](assets/images/parsec_overview.png)]
-???
 - We call a group that contains over two thirds of the nodes a supermajority
 - Nodes constantly **gossip** to each other
 - They record information gossiped to them as **gossip events** inside a **gossip graph**
@@ -846,8 +794,9 @@ count: false
 ---
 template:sparks_3
 ## PARSEC
+.fitted-pic[![PARSEC](assets/images/gossip.jpg)]
+???
 ### Gossip
-.center.fitted-pic[![PARSEC](assets/images/gossip.jpg)]
 
 ---
 template:sparks_4
@@ -868,7 +817,6 @@ count: false
 Ongoing
 --
 count: false
-
   - Integration into routing layer
 --
 count: false
@@ -876,11 +824,9 @@ count: false
 - Paper improvements
 --
 count: false
-
   - Incorporate community feedback
 --
 count: false
-
   - Improve asynchrony
 --
 count: false
@@ -888,8 +834,7 @@ count: false
 - Upcoming London events
 --
 count: false
-
-  - Work On Blockchain (Sept. 11)
+  - Work On Blockchain (Sept 11)
 ???
 Deep dive at Kings College London
 2 hours including grilling/Q&A session
@@ -898,26 +843,25 @@ With Bart Kaminski
 https://www.eventbrite.com/e/an-exploration-of-the-safe-network-and-its-open-consensus-protocol-parsec-tickets-48908375267
 --
 count: false
-
-  - Rust London Meetup (End of Sept.)
+  - Rust London Meetup (End of Sept)
 ???
 For a talk about how the entire rust ecosystem has been supporting us when implementing PARSEC
 
 https://www.meetup.com/Rust-London-User-Group/
 --
 count: false
-
-  - Mozfest (?) (Oct. 26-28)
+  - Mozfest (?) (Oct 26-28)
 ???
 Taking back the web! Set up your first SAFE website in under a minute
 https://github.com/MozillaFestival/mozfest-program-2018/issues/221
 
 ---
 template: the_end
-.logo[![cryptonomy](assets/images/cryptonomy.jpg)]
-.logo.right[![rise_logo](assets/images/rise_logo)]
 # Thank you!
-
+.center[
+.small-pic[![cryptonomy](assets/images/cryptonomy.jpg)]
+.small-pic[![rise_logo](assets/images/rise_logo)]
+]
 ???
 - Thanks to Oscar from cryptonomy for basically organising the entire meetup
 
@@ -932,7 +876,7 @@ template: the_end
         highlightLanguage: 'rust',
         highlightLines: 'true',
         highlightSpans: 'true',
-        highlightStyle: 'monokai'});
+        highlightStyle: 'tomorrow-night-blue'});
     </script>
   </body>
 </html>
