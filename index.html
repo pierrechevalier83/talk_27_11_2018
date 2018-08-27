@@ -25,7 +25,6 @@
       }
       h1, h2 {
         font-family: 'Halis Round';
-        color: #333333;
         max-width: 90%;
       }
       h3 {
@@ -36,12 +35,12 @@
         font-family: 'Monaco';
         width: 90%;
       }
-      .white_text {
-        color: white;
+      .classy_text {
+        color: #333333;
         max-width: 90%;
       }
-      .white_text h1, h2 {
-        color: #f5f4f2;
+      .white_text {
+        color: white;
         max-width: 90%;
       }
       .remark-code-line-highlighted {
@@ -54,12 +53,12 @@
         height: auto;
         width: auto;
         max-height: 340px;
-        max-width: 90%;
+        max-width: 80%;
       }
       .small-pic img {
         height: auto;
         width: auto;
-        max-height: 200px;
+        max-height: 100px;
         max-width: 350px;
       }
       .tiny-pic img {
@@ -112,12 +111,14 @@ background-size: 11.1% 100%, 11.1% 100%, 11.1% 16%, 11.1% 6%, 22.2% 6%
 ---
 layout: true
 name: yellow
+class: classy_text
 background-color: #f2e14c
 .logo[![logo](assets/images/logo.svg)]<br>
 
 ---
 layout: true
 name: light_grey
+class: classy_text
 background-color: #f5f4f2
 .logo[![logo](assets/images/logo.svg)]<br>
 
@@ -145,6 +146,7 @@ background-color: #1f3a80
 ---
 layout: true
 name: sea
+class: classy_text
 template: textures
 background-image: url("assets/images/texture_1.png"), url("assets/images/texture_3.png"), url("assets/images/texture_2.png"), url("assets/images/yellow.png"), url("assets/images/yellow.png")
 background-color: #f5f4f2
@@ -153,6 +155,7 @@ background-color: #f5f4f2
 ---
 layout: true
 name: sea_2
+class: classy_text
 template: textures_2
 background-image: url("assets/images/texture_1.png"), url("assets/images/texture_2.png"), url("assets/images/texture_3.png"), url("assets/images/white.png"), url("assets/images/white.png")
 background-color: #f2e14c
@@ -162,6 +165,7 @@ background-color: #f2e14c
 ---
 layout: true
 name: birds
+class: classy_text
 template: textures_3
 background-image: url("assets/images/bird_panel_4.svg"), url("assets/images/bird_panel_1.svg"), url("assets/images/bird_panel_2.svg"), url("assets/images/white.png"), url("assets/images/white.png")
 background-color: #f5f4f2
@@ -171,6 +175,7 @@ background-color: #f5f4f2
 ---
 layout: true
 name: birds_2
+class: classy_text
 template: textures
 background-image: url("assets/images/bird_panel_4.svg"), url("assets/images/bird_panel_1.svg"), url("assets/images/bird_panel_2.svg"), url("assets/images/light_grey.svg"), url("assets/images/light_grey.png")
 background-color: #ffffff
@@ -180,6 +185,7 @@ background-color: #ffffff
 ---
 layout: true
 name: birds_3
+class: classy_text
 template: textures_2
 background-image: url("assets/images/bird_panel_4.svg"), url("assets/images/bird_panel_1.svg"), url("assets/images/bird_panel_2.svg"), url("assets/images/white.png"), url("assets/images/white.png")
 background-color: #f5f4f2
@@ -189,6 +195,7 @@ background-color: #f5f4f2
 ---
 layout: true
 name: birds_4
+class: classy_text
 template: textures
 background-image: url("assets/images/bird_panel_4.svg"), url("assets/images/bird_panel_1.svg"), url("assets/images/bird_panel_2.svg"), url("assets/images/light_grey.svg"), url("assets/images/light_grey.png")
 background-color: #ffffff
@@ -250,7 +257,7 @@ layout:true
 name:sparks_2
 class: white_text
 template: textures_2
-background-image: url("assets/images/spark-texture-1.jpg"), url("assets/images/spark-texture-3.jpg"), url("assets/images/texture_10.png"), url("assets/images/light_grey.png"), url("assets/images/yellow.png")
+background-image: url("assets/images/spark-texture-1.jpg"), url("assets/images/spark-texture-3.jpg"), url("assets/images/texture_10.png"), url("assets/images/yellow.png"), url("assets/images/white.png")
 background-color: #f0572a
 .logo[![logo](assets/images/logo_light.svg)]
 <br><br><br>
@@ -295,6 +302,7 @@ background-color: #1f3a80
 ---
 layout:true
 name:ants
+class: classy_text
 template: art
 background-image: url("assets/images/hiw_pattern_2.svg")
 background-color: #f2e14c
@@ -304,6 +312,7 @@ background-color: #f2e14c
 ---
 layout:true
 name:stripes
+class: classy_text
 template: art
 background-image: url("assets/images/hiw_pattern_3.svg")
 background-color: white
@@ -313,6 +322,7 @@ background-color: white
 ---
 layout:true
 name:rain
+class: classy_text
 template: art
 background-image: url("assets/images/hiw_pattern_4.svg")
 background-color: #f5f4f2
@@ -322,6 +332,7 @@ background-color: #f5f4f2
 ---
 layout:true
 name:rings
+class: classy_text
 template: art
 background-image: url("assets/images/hiw_pattern_5.svg")
 background-color: white
@@ -331,6 +342,7 @@ background-color: white
 ---
 layout:true
 name:the_end
+class: classy_text
 background-position: bottom
 background-size: 100% 20%
 background-repeat: repeat
@@ -714,7 +726,7 @@ template: fields
 So we came to realize that the state of the art wasn't enough and that we would need to come up with our own solution if we wanted a protocol to fit all our needs.
 
 ---
-template:sparks
+template:sparks_2
 ## PARSEC
 .fitted-pic[![PARSEC](assets/images/spoiler_alert.png)]
 
@@ -727,7 +739,7 @@ In this section, I'll explain some of these smaller maths problems for the case 
 
 It's gonna be really boring, so I thought I would reveal the features we gain from this exercise so hopefully that keeps you motivated to listen to my monotone lecture :) 
 ---
-template:sparks
+template:sparks_2
 count: false
 ## PARSEC
 ### Features
@@ -749,7 +761,7 @@ count: false
 ???
 No compromise: PARSEC can reach consensus in O(N*log(N)) which is at the theoretical limit for the number of nodes.
 ---
-template:sparks
+template:sparks_2
 count: false
 ## PARSEC
 ### Features
@@ -775,7 +787,7 @@ Our algorithm only uses simple ideas and composes them to make an elegant soluti
 
 Not to make it sound like we're some kinds of geniuses: the two most powerful, simple and elegant ideas behind PARSEC are the way we solve binary consensus and the concrete coin idea. Both ideas were shameless-ly ripped off from existing papers :D
 ---
-template:sparks_2
+template:sparks
 ## PARSEC
 .fitted-pic[![PARSEC overview](assets/images/parsec_overview.png)]
 ???
@@ -807,11 +819,9 @@ template:small_dots
 ## What's next?
 --
 count: false
-
 - Implementation
 --
 count: false
-
   - Dynamic membership
 ???
 Ongoing
@@ -820,7 +830,6 @@ count: false
   - Integration into routing layer
 --
 count: false
-
 - Paper improvements
 --
 count: false
@@ -830,7 +839,6 @@ count: false
   - Improve asynchrony
 --
 count: false
-
 - Upcoming London events
 --
 count: false
@@ -859,6 +867,7 @@ https://github.com/MozillaFestival/mozfest-program-2018/issues/221
 template: the_end
 # Thank you!
 .center[
+.small-pic[![cryptonomy](assets/images/maidsafe_logo.png)]
 .small-pic[![cryptonomy](assets/images/cryptonomy.jpg)]
 .small-pic[![rise_logo](assets/images/rise_logo)]
 ]
