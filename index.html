@@ -796,7 +796,7 @@ template:sparks
 - We call a group that contains over two thirds of the nodes a supermajority
 - Nodes constantly **gossip** to each other
 - They record information gossiped to them as **gossip events** inside a **gossip graph**
-- **gossip events** in a gossip graph may have special relationships such as **seeing** each other or **strongly seeing** each other
+- **gossip events** may have special relationships such as **seeing** each other or **strongly seeing** each other
 - When a node notices that something happens in the network, they **vote** to inform other nodes of their observation
 - The vote is conveyed to other nodes through **gossip**
 - **gossip events** that contain votes and have been **strongly seen** by a **supermajority** of nodes are **interesting events**.
@@ -806,14 +806,16 @@ template:sparks
 ---
 template:sparks_3
 ## PARSEC
-.fitted-pic[![PARSEC](assets/images/gossip.jpg)]
+.fitted-pic[![Gossip](assets/images/gossip.jpg)]
 ???
 ### Gossip
 
 ---
-template:sparks_4
+template:sparks_2
 ## PARSEC
-### TODO
+.center[
+# [Gossip graph](assets/images/Carol-008.dot.svg)
+]
 ---
 template:small_dots
 ## What's next?
