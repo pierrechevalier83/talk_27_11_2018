@@ -360,6 +360,17 @@ template: sea
 <br><br><br>
 .small-pic[![maidsafe](assets/images/logo.svg)]
 
+???
+Thanks Dug! Very nice presentation.
+
+Now that we're all caught up on what the SAFE Network is at a high level and we've got an idea of how different parts fit together, let's deep dive into one of our latest innovations: PARSEC: a Protocol for Asynchronous, Reliable, Secure and Efficient Consensus.
+
+I'm Pierre, I'm in the routing team at MaidSafe, so I'm part of the team that designed and are now implementing PARSEC.
+
+If you're the kind of people who lurk on the forum and you've been following the news from Maidsafe, you may have a vague idea about what PARSEC is.
+
+What I'ld like to do with this presentation is to walk you through the motivations for inventing it and give you a sneek peek into it's mechanics. I'll be happy at the end of this talk if you take away that PARSEC isn't rocket science. It's just cool tech! Yo!
+
 ---
 template: sea_2
 
@@ -423,7 +434,6 @@ count: false
 count: false
 - ... 
 ???
-- Would be a productivity gain
 ---
 template:birds_2
 ## Routing
@@ -432,18 +442,36 @@ template:birds_2
 --
 count: false
 - Partitions the network into `sections`
---
-count: false
+???
+- Sharding
 - Decides which `nodes` belong in which `sections`
 --
 count: false
 - Assigns a `close group` for each data
+???
+
+- Deduplication
+- Redundancy
+--
+count: false
+- Mitigates sybil attacks
+???
+
+- Node Ageing
+- Node rellocation
 --
 count: false
 - Allows secure communications across sections
+???
+
+- Secure message relay
 --
 count: false
 - Enables consensus within a section
+???
+
+- Quorum of agreeing peers
+- Agreement on events and orders
 ---
 template:birds_3
 ## Routing
@@ -793,6 +821,13 @@ template:sparks
 ???
 ### In a nutshell
 
+Before we dive too deep into the boring maths, let me explain the general intuition behind PARSEC:
+
+As things happen in the network, nodes gossip to each other.
+Everytime a node receives a new piece of gossip they hadn't heard before, they write it down into a data structure called a gossip graph.
+
+
+
 - We call a group that contains over two thirds of the nodes a supermajority
 - Nodes constantly **gossip** to each other
 - They record information gossiped to them as **gossip events** inside a **gossip graph**
@@ -800,7 +835,7 @@ template:sparks
 - When a node notices that something happens in the network, they **vote** to inform other nodes of their observation
 - The vote is conveyed to other nodes through **gossip**
 - **gossip events** that contain votes and have been **strongly seen** by a **supermajority** of nodes are **interesting events**.
-- They are said to carry **valid blocks** 
+- They are said to carry **valid blocks**
 - TODO
 
 ---
