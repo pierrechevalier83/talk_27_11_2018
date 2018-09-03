@@ -352,13 +352,15 @@ class:center
 .logo.left[![logo](assets/images/logo.svg)]
 <br><br><br><br>
 
-
 ---
 template: sea
 # PARSEC:
 ### It's cool tech, yo!
 <br><br><br>
 .small-pic[![maidsafe](assets/images/logo.svg)]
+
+--
+count: false
 
 ???
 Thanks Dug! Very nice presentation.
@@ -821,22 +823,16 @@ template:sparks
 ???
 ### In a nutshell
 
-Before we dive too deep into the boring maths, let me explain the general intuition behind PARSEC:
+Before diving too deep into the details; let's cover PARSEC at a high level:
 
-As things happen in the network, nodes gossip to each other.
-Everytime a node receives a new piece of gossip they hadn't heard before, they write it down into a data structure called a gossip graph.
+- Nodes on the network use gossip to communicate with each other.
+Gossip is a very efficient way to communicate information in a trustless network.
 
+- As they are gossiping to each other, each node keeps a full record of everything that has been gossiped to them. We call this record the gossip graph.
 
+- The gossip graph is a data structure that is eventually consistent; which means that even though different nodes will build different gossip graphs, at some point nodes will have a proof that something that's in their graph will eventually make it to other nodes' graphs.
 
-- We call a group that contains over two thirds of the nodes a supermajority
-- Nodes constantly **gossip** to each other
-- They record information gossiped to them as **gossip events** inside a **gossip graph**
-- **gossip events** may have special relationships such as **seeing** each other or **strongly seeing** each other
-- When a node notices that something happens in the network, they **vote** to inform other nodes of their observation
-- The vote is conveyed to other nodes through **gossip**
-- **gossip events** that contain votes and have been **strongly seen** by a **supermajority** of nodes are **interesting events**.
-- They are said to carry **valid blocks**
-- TODO
+- What PARSEC does is infer an order on events that were communicated from the gossip graph
 
 ---
 template:sparks_3
@@ -845,12 +841,156 @@ template:sparks_3
 ???
 ### Gossip
 
+Now when I said: nodes gossip to each other, this may seem a bit vague; but it's not.
+The gossip protocol is a well known mathematical construct to spread information in distributed systems.
+
+The idea is to spread information in a way that is totally resilient to any node being dishonest but also efficient.
+
+- Broadcast: inefficient
+O(N^2)
+- Round Robin: not resilient
+O(N)
+- Gossip: pick partner at random every fixed time interval
+O(N*log(N))
+
 ---
 template:sparks_2
 ## PARSEC
-.center[
-# [Gossip graph](assets/images/Carol-008.dot.svg)
-]
+.fitted-pic[![Signatures](assets/images/signature.jpg)]
+???
+Gossiping information is enough to spread it in a resilient manner, but it's not enough to establish trust or to decide an order in which things happened on the network.
+
+Nodes keep a record of everything that's been gossiped to them and they transmit that to other nodes when they're gossiping to them.
+
+They do this with cryptograpically signed messages, which means that they can be proven to have propagated that version of the truth.
+
+This means that if a node sent you a version of the truth and sent someone else a different version; this node would eventually be caught in their lie.
+
+---
+template:sparks_3
+## PARSEC
+.fitted-pic[![Signatures](assets/images/seen_strongly_seen_1.png)]
+???
+Let's dive in and see what a gossip graph may look like. This way, I will also be able to explain a couple of interesting concepts related to the gossip graph.
+
+The graph is read from bottom to top. Each circle represent a communication that happened in the network.
+
+Note that some of these gossip events could contain votes, which an observation by a node of something happening in the network.
+
+For instance here, Bob gossiped to Carol and Carol gossiped back to Bob.
+Then, Bob gossiped to Alice and let her know everything she knew.
+This way Alice could sync her graph with Bob's and Carol's.
+
+If everyone communicates this way, everyone's graph ends up containing roughly the same information.
+
+---
+template:sparks_3
+## PARSEC
+.fitted-pic[![Signatures](assets/images/seen_strongly_seen_2.png)]
+???
+To be able to analyse these gossip graphs, it is useful to define a couple of relationships between events.
+
+This graph demonstrates the concept of seeing.
+
+A more recent gossip event (like d_4 here) is said to see an older gossip event (for instance b_0) if b_0 is an ancestor of d_4. So you can trace a path in the graph that goes from b_0 to d_4, only going upwards.
+
+Note that the history from each node's point of view must be linear. If it isn't, it's called a fork and it proves that the author of the forked events is malicious.
+
+In that case, not only will the node be punished, but also none of the branches of the forks will be seen by any gossip event that descends from both.
+
+---
+template:sparks_3
+## PARSEC
+.fitted-pic[![Signatures](assets/images/seen_strongly_seen_3.png)]
+???
+Another crucial concept when analysing the gossip graph is that of strongly seeing.
+
+A gossip event strongly sees another gossip event if it can see it and the directed paths between both events cover over 2/3 of the nodes.
+
+For instance here, Alice's event: a_1 sees b_0 and the paths between a_1 and b_0 cover events created by Alice, Bob and Dave.
+
+This definition is very important because it represents the point of no return after which a rumour is unstopable by any malicious nodes.
+
+The reason we only require over 2/3 of the nodes (a supermajority) and not all nodes is so that 1/3 - 1 nodes can be malicious and completely stop participating in the gossip protocol without ever affecting progress.
+
+---
+template:sparks
+## PARSEC
+.fitted-pic[![Signatures](assets/images/interesting_event.jpg)]
+???
+Now, as I mentionned when describing gossip, some of the events contain votes from nodes.
+
+For instance Alice may learn that Eric would like to join the network and then vote for this.
+
+We could reach consensus on the order of which one of these votes, and that would totally work; but for us, in the SAFE Network, we only care about votes that have reached quorum.
+
+So we define the concept of an interesting event which is a **gossip event** which **sees** **gossip events** created by a **supermajority** of **nodes** that contain **votes** for a given **network event**.
+
+We will only reach consensus on these as they're the only interesting events for us.
+
+---
+template:sparks_2
+## PARSEC
+.fitted-pic[![Signatures](assets/images/observer.png)]
+???
+Building on this concept of strongly seen, we can define the concept of an observer.
+
+The technical definition is: a gossip event that strongly sees interesting gossip events proposed by a supermajority of nodes;
+
+But what it means is that after this gossip event, we know that the information in the graph has been propagated beyond the point of no return and cannot be censored by a malicious actor.
+
+This guarentees consensus on these events; but doesn't define an order.
+
+---
+template:sparks
+## PARSEC
+.fitted-pic[![Signatures](assets/images/meta_vote.jpg)]
+???
+The last step is to agree on an order for the interesting event.
+
+This is done by holding a virtual election between observers:
+Since they strongly see interesting events proposed by a supermajority of nodes, they are said to vote yes for each of these nodes and vote no for all other nodes.
+
+This reduces the larger problem of Byzantine consensus to the problem of Binary consensus: reaching consensus on the outcome of a yes or no question.
+
+---
+template:sparks_3
+## PARSEC
+.fitted-pic[![Signatures](assets/images/problem_solved.png)]
+???
+### Binary consensus
+This is a problem that already has an existing elegant solution.
+
+Signature Free Asynchronous Byzantine Consensus with t < n/3 and O(n^2) messages.
+Raynal et all.
+
+We took this solution and adapted it to gossip, which wasn't very difficult and allowed us to improve the complexity from O(n^2) to O(n*log(n)).
+
+---
+template:sparks_2
+## PARSEC
+.fitted-pic[![Signatures](assets/images/concrete.jpg)]
+???
+Oh, a little detail: the algorithm we used for Binary consensus depends on a common coin, which is an issue for staying asynchronous when there is churn in the network;
+
+so we replaced that step with a concrete coin, which was published in a paper from Silvio Micali in 2018 named "Byzantine Agreement made Trivial".
+
+---
+template:sparks
+## PARSEC
+* Asynchronous ✓ (*)
+* Scalable ✓
+* Permission-less ✓
+* Open Source ✓
+* Simple ✓
+???
+So that's it, we didn't invent gossip, we didn't come up with a solution to binary consensus, we didn't invent the conrete coin.
+
+We simply reduced the general problem of asynchronous byzantine consenus to a binary consensus problem and solved it over gossip for efficiency;
+and just like that, we got all the properties we needed :D
+
+We already coded it up in a static network and are now expending it to handle churn.
+
 ---
 template:small_dots
 ## What's next?
@@ -914,6 +1054,12 @@ template: the_end
 - Thanks to Rise for hosting us
 
 - Thank you all for listening
+---
+.center[
+# [Gossip graph](assets/images/Carol-008.dot.svg)
+# [Whitepaper](assets/PARSEC.pdf)
+]
+
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
     </script>
