@@ -1,3 +1,7 @@
-Presentation about PARSEC for SAFE Network Meetup London, on 29/08/2018.
+Presentation about PARSEC for Work on Blockchain meetup
+
+PARSEC, Deep Dive,
+Kings College London,
+11/09/2018.
 
 To view, simply open "index.html" with your favourite web browser.
