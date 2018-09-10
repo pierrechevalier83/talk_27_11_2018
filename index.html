@@ -390,7 +390,7 @@ count: false
 count: false
 #### What's next?
 ---
-template: birds
+template: sparks
 
 ## Routing
 
@@ -437,7 +437,7 @@ count: false
 - ... 
 ???
 ---
-template:birds_2
+template:sparks_2
 ## Routing
 
 ### What it does
@@ -475,7 +475,7 @@ count: false
 - Quorum of agreeing peers
 - Agreement on events and orders
 ---
-template:birds_3
+template:sparks_3
 ## Routing
 
 ### How it does it
@@ -484,7 +484,7 @@ count: false
 
 - Pretend everything is a 256 bit int
 ---
-template:birds_3
+template:sparks_3
 count: false
 ## Routing
 
@@ -499,7 +499,7 @@ count: false
 count: false
  - Data
 ---
-template:birds_4
+template:sparks_4
 ## Routing
 
 ### How it does it
@@ -524,7 +524,7 @@ can be represented in binary
 0101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001
 ```
 ---
-template:birds
+template:sparks
 ## Routing
 
 ### How it does it
@@ -538,7 +538,7 @@ count: false
 node id: 11010010001111100...
 ```
 ---
-template:birds
+template:sparks
 count: false
 ## Routing
 ### How it does it
@@ -559,7 +559,7 @@ node id: 11010010001111100...
 ]
 
 ---
-template:birds
+template:sparks
 count: false
 ## Routing
 
@@ -580,7 +580,7 @@ node id: `1`1010010001111100...
 | 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
 ]
 ---
-template:birds
+template:sparks
 count: false
 ## Routing
 
@@ -601,7 +601,7 @@ node id: 1`1`010010001111100...
 | 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
 ]
 ---
-template:birds
+template:sparks
 count: false
 ## Routing
 
@@ -622,7 +622,7 @@ node id: 11`0`10010001111100...
 | 000  | 001   | 010   | 011   | 100   | 101   | **110**   | 111   |
 ]
 ---
-template:birds_2
+template:sparks_2
 ## Routing
 
 ### How it does it
@@ -637,7 +637,7 @@ count: false
 ???
 xor space has the desirable property that distances are unique
 ---
-template:birds
+template:sparks
 ## Routing
 
 ### How it does it
@@ -756,7 +756,7 @@ template: fields
 So we came to realize that the state of the art wasn't enough and that we would need to come up with our own solution if we wanted a protocol to fit all our needs.
 
 ---
-template:sparks_2
+template:birds_2
 ## PARSEC
 .fitted-pic[![PARSEC](assets/images/spoiler_alert.png)]
 
@@ -769,7 +769,7 @@ In this section, I'll explain some of these smaller maths problems for the case 
 
 It's gonna be really boring, so I thought I would reveal the features we gain from this exercise so hopefully that keeps you motivated to listen to my monotone lecture :) 
 ---
-template:sparks_2
+template:birds_2
 count: false
 ## PARSEC
 ### Features
@@ -791,7 +791,7 @@ count: false
 ???
 No compromise: PARSEC can reach consensus in O(N*log(N)) which is at the theoretical limit for the number of nodes.
 ---
-template:sparks_2
+template:birds_2
 count: false
 ## PARSEC
 ### Features
@@ -817,7 +817,7 @@ Our algorithm only uses simple ideas and composes them to make an elegant soluti
 
 Not to make it sound like we're some kinds of geniuses: the two most powerful, simple and elegant ideas behind PARSEC are the way we solve binary consensus and the concrete coin idea. Both ideas were shameless-ly ripped off from existing papers :D
 ---
-template:sparks
+template:birds
 ## PARSEC
 .fitted-pic[![PARSEC overview](assets/images/parsec_overview.png)]
 ???
@@ -835,7 +835,7 @@ Gossip is a very efficient way to communicate information in a trustless network
 - What PARSEC does is infer an order on events that were communicated from the gossip graph
 
 ---
-template:sparks_3
+template:birds_3
 ## PARSEC
 .fitted-pic[![Gossip](assets/images/gossip.jpg)]
 ???
@@ -854,7 +854,7 @@ O(N)
 O(N*log(N))
 
 ---
-template:sparks_2
+template:birds_2
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/signature.jpg)]
 ???
@@ -867,9 +867,9 @@ They do this with cryptograpically signed messages, which means that they can be
 This means that if a node sent you a version of the truth and sent someone else a different version; this node would eventually be caught in their lie.
 
 ---
-template:sparks_3
+template:birds_3
 ## PARSEC
-.fitted-pic[![Signatures](assets/images/seen_strongly_seen_1.png)]
+.fitted-pic[![Gossip-graph-0](assets/images/gossip_graph_0.svg)]
 ???
 Let's dive in and see what a gossip graph may look like. This way, I will also be able to explain a couple of interesting concepts related to the gossip graph.
 
@@ -884,7 +884,7 @@ This way Alice could sync her graph with Bob's and Carol's.
 If everyone communicates this way, everyone's graph ends up containing roughly the same information.
 
 ---
-template:sparks_3
+template:birds_3
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/seen_strongly_seen_2.png)]
 ???
@@ -899,7 +899,7 @@ Note that the history from each node's point of view must be linear. If it isn't
 In that case, not only will the node be punished, but also none of the branches of the forks will be seen by any gossip event that descends from both.
 
 ---
-template:sparks_3
+template:birds_3
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/seen_strongly_seen_3.png)]
 ???
@@ -914,7 +914,7 @@ This definition is very important because it represents the point of no return a
 The reason we only require over 2/3 of the nodes (a supermajority) and not all nodes is so that 1/3 - 1 nodes can be malicious and completely stop participating in the gossip protocol without ever affecting progress.
 
 ---
-template:sparks
+template:birds
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/interesting_event.jpg)]
 ???
@@ -929,7 +929,7 @@ So we define the concept of an interesting event which is a **gossip event** whi
 We will only reach consensus on these as they're the only interesting events for us.
 
 ---
-template:sparks_2
+template:birds_2
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/observer.png)]
 ???
@@ -942,7 +942,7 @@ But what it means is that after this gossip event, we know that the information 
 This guarentees consensus on these events; but doesn't define an order.
 
 ---
-template:sparks
+template:birds
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/meta_vote.jpg)]
 ???
@@ -954,7 +954,7 @@ Since they strongly see interesting events proposed by a supermajority of nodes,
 This reduces the larger problem of Byzantine consensus to the problem of Binary consensus: reaching consensus on the outcome of a yes or no question.
 
 ---
-template:sparks_3
+template:birds_3
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/problem_solved.png)]
 ???
@@ -967,7 +967,7 @@ Raynal et all.
 We took this solution and adapted it to gossip, which wasn't very difficult and allowed us to improve the complexity from O(n^2) to O(n*log(n)).
 
 ---
-template:sparks_2
+template:birds_2
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/concrete.jpg)]
 ???
@@ -976,7 +976,7 @@ Oh, a little detail: the algorithm we used for Binary consensus depends on a com
 so we replaced that step with a concrete coin, which was published in a paper from Silvio Micali in 2018 named "Byzantine Agreement made Trivial".
 
 ---
-template:sparks
+template:birds
 ## PARSEC
 * Asynchronous ✓ (*)
 * Scalable ✓
