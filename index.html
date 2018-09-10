@@ -33,7 +33,7 @@
       }
       .remark-code, .remark-inline-code {
         font-family: 'Monaco';
-        width: 90%;
+        width: 70%;
       }
       .classy_text {
         color: #333333;
@@ -657,6 +657,85 @@ They do this with cryptograpically signed messages, which means that they can be
 
 This means that if a node sent you a version of the truth and sent someone else a different version; this node would eventually be caught in their lie.
 
+---
+template:birds_3
+## PARSEC
+
+### GossipEvent
+
+```rust
+struct Event<T: NetworkEvent, P: PublicId> {
+*   creator: P,
+    signature: P::Signature,
+    self_parent: Option<Hash>,
+    other_parent: Option<Hash>,
+    observation: Option<Vote<T, P>,
+}
+```
+---
+template:birds_3
+count:false
+## PARSEC
+
+### GossipEvent
+
+```rust
+struct Event<T: NetworkEvent, P: PublicId> {
+    creator: P,
+*   signature: P::Signature,
+    self_parent: Option<Hash>,
+    other_parent: Option<Hash>,
+    observation: Option<Vote<T, P>,
+}
+```
+---
+template:birds_3
+count:false
+## PARSEC
+
+### GossipEvent
+
+```rust
+struct Event<T: NetworkEvent, P: PublicId> {
+    creator: P,
+    signature: P::Signature,
+*   self_parent: Option<Hash>,
+    other_parent: Option<Hash>,
+    observation: Option<Vote<T, P>,
+}
+```
+---
+template:birds_3
+count:false
+## PARSEC
+
+### GossipEvent
+
+```rust
+struct Event<T: NetworkEvent, P: PublicId> {
+    creator: P,
+    signature: P::Signature,
+    self_parent: Option<Hash>,
+*   other_parent: Option<Hash>,
+    observation: Option<Vote<T, P>,
+}
+```
+---
+template:birds_3
+count:false
+## PARSEC
+
+### GossipEvent
+
+```rust
+struct Event<T: NetworkEvent, P: PublicId> {
+    creator: P,
+    signature: P::Signature,
+    self_parent: Option<Hash>,
+    other_parent: Option<Hash>,
+*   observation: Option<Vote<T, P>,
+}
+```
 ---
 template:birds_2
 ## PARSEC
