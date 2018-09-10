@@ -1016,7 +1016,7 @@ count:false
 .fitted-pic[![Seen-1](assets/images/seen_1.svg)]
 
 ???
-Here is an example. We say that a1 _sees_ c0, because c0 is a1's ancestor. There is a caveat here - if a node was malicious and created a _fork_, and both branches of the fork contain ancestors of our event, then we say that it doesn't see any of them. This is an important protection against malicious behaviour - if you try to game the system, you lose all influence you might have had.
+Here is an example. We say that a1 _sees_ c0, because c0 is a1's ancestor. There is a caveat here - if a node was malicious and created a _fork_, and both branches of the fork contain ancestors of our event, then we say that it doesn't see any of them. This is an important protection against malicious behaviour - if you try to game the system, you lose all influence you might have had. We will expand on that in a moment.
 
 ---
 template:birds_1
@@ -1029,6 +1029,32 @@ Another example: c2 sees b0. This is just to showcase that the event being seen 
 
 ---
 template:birds_2
+## PARSEC
+.fitted-pic[![Fork-0](assets/images/fork_0.svg)]
+
+???
+We mentioned forks before. In this example Carol is malicious and tried passing different information to different nodes. She created events c1 and c1' that both have c0 as the parent.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Fork-1](assets/images/fork_1.svg)]
+
+???
+Nothing special happens at first. Event d1 sees c1' normally.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Fork-2](assets/images/fork_2.svg)]
+
+???
+It is at d2 that interesting things happen. d2 has both c1 and c1' among its ancestors. Upon creation of this event, Dave will know that something fishy is happening. By the definition of seeing, even though d1 sees c1', d2 doesn't see either c1 or c1'. In fact, it and its descendants won't see any event created by Carol at all.
+
+---
+template:birds_1
 ## PARSEC
 
 ### Supermajority
@@ -1057,7 +1083,7 @@ count:false
 Second, two sets of nodes that are supermajorities are guaranteed to have an honest node in common. This second property is something that makes supermajorities a very useful concept.
 
 ---
-template:birds_1
+template:birds_2
 ## PARSEC
 .fitted-pic[![Strongly-seen-0](assets/images/strongly_seen_0.svg)]
 
@@ -1065,7 +1091,7 @@ template:birds_1
 Another important concept is the one of _strongly seeing_. An event seeing another event can be thought of as a proof that the first event's creator has received the second event and that it wasn't aware of any forks by the second event's creator at that time. Strongly seeing provides something much stronger.
 
 ---
-template:birds_1
+template:birds_2
 count:false
 ## PARSEC
 .fitted-pic[![Strongly-seen-1](assets/images/strongly_seen_1.svg)]
@@ -1078,7 +1104,7 @@ Another possible wording of strongly seeing is: A strongly sees B if there are d
 In this example a1 strongly sees b0. It sees itself (a1), c0 and b0 itself, all of which see b0. These events are created by Alice, Bob and Carol, so 3 nodes, which are more than 2/3 out of 4.
 
 ---
-template:birds_1
+template:birds_2
 count:false
 ## PARSEC
 .fitted-pic[![Strongly-seen-2](assets/images/strongly_seen_2.svg)]
@@ -1087,7 +1113,7 @@ count:false
 Let's look at another example. We have d1 seeing c2, b1 and a0. Those are events by 4 different creators that all see a0. Thus, d1 strongly sees a0.
 
 ---
-template:birds_1
+template:birds_2
 count:false
 ## PARSEC
 .fitted-pic[![Strongly-seen-3](assets/images/strongly_seen_3.svg)]
@@ -1098,7 +1124,7 @@ In this example we look at a2 and a0. The only events seeing a0 that a2 sees are
 The reason strongly seeing is so important is because it provides a strong guarantee: if an event strongly sees an event created by node X, no other event can strongly see an event created by X that is on another branch of a fork.
 
 ---
-template:birds_2
+template:birds_1
 ## PARSEC
 
 ### Strongly seeing
@@ -1113,7 +1139,7 @@ Assume they could.
 Assume Carol created a fork, and an event by Alice strongly sees event cn, and an event by Bob strongly sees cn'. This means that Alice's event sees events by a supermajority of creators that see cn. Bob's event sees events by a supermajority of creators that see cn'.
 
 ---
-template:birds_2
+template:birds_1
 count:false
 ## PARSEC
 
