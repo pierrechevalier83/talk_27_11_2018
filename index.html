@@ -792,7 +792,8 @@ Also note that some of these gossip events could contain votes, which an observa
 ---
 template:birds_1
 ## PARSEC
-.fitted-pic[![Seen-0](assets/images/seen_0.svg)]
+
+.fitted-pic[![Eye](assets/images/eye.jpg)]
 
 ???
 Once we have the gossip graph, we can start talking about its properties. One of the important concept in such a graph is the concept of an event _seeing_ another event.
@@ -818,10 +819,19 @@ Another example: c2 sees b0. This is just to showcase that the event being seen 
 ---
 template:birds_2
 ## PARSEC
+.fitted-pic[![Fork](assets/images/fork.jpg)]
+
+???
+We mentioned forks before...
+
+---
+template:birds_2
+count:false
+## PARSEC
 .fitted-pic[![Fork-0](assets/images/fork_0.svg)]
 
 ???
-We mentioned forks before. In this example Carol is malicious and tried passing different information to different nodes. She created events c1 and c1' that both have c0 as the parent.
+In this example Carol is malicious and tried passing different information to different nodes. She created events c1 and c1' that both have c0 as the parent.
 
 ---
 template:birds_2
@@ -873,9 +883,9 @@ Second, any two supermajorities are guaranteed to have an honest node in common.
 Of course, we could get those two properties by requiring 100% of nodes in a supermajority - but then the malicious nodes could stop us from collecting one. In this case, as long as the malicious nodes constitute less than 1/3 of the network, we will be fine.
 
 ---
-template:birds_2
+template:birds_1
 ## PARSEC
-.fitted-pic[![Strongly-seen-0](assets/images/strongly_seen_0.svg)]
+.fitted-pic[![Strongly-seen-0](assets/images/sauron.png)]
 
 ???
 Another important concept is the one of _strongly seeing_. An event seeing another event can be thought of as a proof that the first event's creator has received the second event and that it wasn't aware of any forks by the second event's creator at that time. Strongly seeing provides something much stronger.
