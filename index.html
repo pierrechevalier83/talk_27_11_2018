@@ -1260,6 +1260,101 @@ Thus, the first estimate is "true" for Alice and Dave, and "false" for Bob and C
 Note that the values associated with observers are purely functions of the structure of the graph. No additional data needs to be exchanged - each node can arrive at the same values for every observer independently.
 
 ---
+template:birds_1
+## PARSEC
+.fitted-pic[![BV-gossip-0](assets/images/bv_gossip_0.svg)]
+
+???
+The first stage of a meta-election is Binary Value Gossip. At this stage every node basically tries to find out what are the estimates of other nodes in order to suggest a possible decision. Let's look at that in detail.
+
+The whole process consists of determining two variables, called "estimates" and "binary values". Both are sets of binary values (so can be empty, contain 0, contain 1 or contain both). The starting point is estimates = {initial vote}, bin-values = empty.
+
+In the picture, estimates are represented by the lower half of the circle, and the binary values by the upper half.
+
+---
+template:birds_1
+count: false
+## PARSEC
+.fitted-pic[![BV-gossip-1](assets/images/bv_gossip_1.svg)]
+
+???
+Every event that is a descendant of an observer has its own set of estimates and binary values. The sets are inherited from the self-parent and optionally modified.
+
+A value gets added to estimates if the event sees at least N/3 events with this value in estimates. A value gets added to bin-values if the event sees a supermajority with this value in estimates.
+
+For starters, b1 inherits "false" in estimates from b0. As it sees neither a supermajority of "false", nor N/3 of "true", it stays in this state.
+
+---
+template:birds_1
+count: false
+## PARSEC
+.fitted-pic[![BV-gossip-2](assets/images/bv_gossip_2.svg)]
+
+???
+a1 inherits "true" from a0. It sees both b0 and c0, which are more than N/3 and both have "false" in estimates, so it adds "false" to its estimates. Now it can see 3 estimates for "false" (itself, b0 and c0), which causes it to add "false" to bin-values as well.
+
+---
+template:birds_1
+count: false
+## PARSEC
+.fitted-pic[![BV-gossip-3](assets/images/bv_gossip_3.svg)]
+
+???
+c1 inherits "false" from c0. It doesn't see anything interesting, so nothing more changes.
+
+---
+template:birds_1
+count: false
+## PARSEC
+.fitted-pic[![BV-gossip-4](assets/images/bv_gossip_4.svg)]
+
+???
+b2 inherits a "false" estimate. It sees d0 and a0, though, which constitute more than N/3 for "true", so it adds "true" to estimates. Now it sees 3 estimates for "true", so it ets added to bin-values.
+
+---
+template:birds_1
+count: false
+## PARSEC
+.fitted-pic[![BV-gossip-5](assets/images/bv_gossip_5.svg)]
+
+???
+c2 is in a similar boat as b2. It sees both a0 and d0, adds "true" to estimates and then immediately to bin-values.
+
+---
+template:birds_1
+count: false
+## PARSEC
+.fitted-pic[![BV-gossip-6](assets/images/bv_gossip_6.svg)]
+
+???
+d1 inherits a "true" estimate. It sees itself, c2 and a0, which are a supermajority of "true", so "true" gets added to bin-values. At the same time, it sees c2 and b1, both having estimates for "false", so it adds "false" to estimates and immediately to bin-values, as d1, c2 and b1 are a supermajority of "false" estimates.
+
+---
+template:birds_1
+count: false
+## PARSEC
+.fitted-pic[![BV-gossip-7](assets/images/bv_gossip_7.svg)]
+
+???
+The last analysed event is a2. It inherits values from a1, but it sees a1, b2 and d0 - all of which have "true" in estimates. It adds "true" to bin-values, then.
+
+---
+template:birds_1
+count: false
+## PARSEC
+.fitted-pic[![BV-gossip-8](assets/images/bv_gossip_8.svg)]
+
+???
+Once an event has non-empty bin-values, it gets assigned an aux value. This aux value is the first value that made it into bin-values. So, a2 has aux=false, while b2, c2 and d1 have aux=true.
+
+---
+template:birds_2
+## PARSEC
+.fitted-pic[![BV-gossip-8](assets/images/common_coin_false_0.svg)]
+
+???
+
+---
 template:birds
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/meta_vote.jpg)]
