@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="800px"
+   height="600px"
+   viewBox="0 0 800 600"
+   version="1.1"
+   id="SVGRoot"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
+   sodipodi:docname="routing.svg">
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.28"
+     inkscape:cx="452.41139"
+     inkscape:cy="217.77293"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1916"
+     inkscape:window-height="1033"
+     inkscape:window-x="0"
+     inkscape:window-y="22"
+     inkscape:window-maximized="0">
+    <inkscape:grid
+       type="xygrid"
+       id="grid5079" />
+  </sodipodi:namedview>
+  <defs
+     id="defs4518" />
+  <metadata
+     id="metadata4521">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     inkscape:groupmode="layer"
+     inkscape:label="Layer 1">
+    <path
+       style="opacity:1;fill:#f2e14c;fill-opacity:1;fill-rule:nonzero;stroke:#333333;stroke-width:3.55653548;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 120,380 V 500 H 680 V 380 Z"
+       id="rect5077"
+       inkscape:connector-curvature="0" />
+    <rect
+       style="opacity:1;fill:#f2e14c;fill-opacity:1;fill-rule:nonzero;stroke:#333333;stroke-width:3.55653548;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5077-3"
+       width="560"
+       height="120"
+       x="120"
+       y="260"
+       ry="0" />
+    <rect
+       style="opacity:1;fill:#f2e14c;fill-opacity:1;fill-rule:nonzero;stroke:#333333;stroke-width:3.55653548;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5077-6"
+       width="280"
+       height="120"
+       x="120"
+       y="140"
+       ry="0" />
+    <rect
+       style="opacity:1;fill:#f2e14c;fill-opacity:1;fill-rule:nonzero;stroke:#333333;stroke-width:3.55653548;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="rect5077-6-7"
+       width="280"
+       height="120"
+       x="400"
+       y="140"
+       ry="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:51.45685196px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#373832;fill-opacity:1;stroke:none;stroke-width:1.92963207px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       x="325.79547"
+       y="456.36771"
+       id="text5139"><tspan
+         sodipodi:role="line"
+         id="tspan5137"
+         x="325.79547"
+         y="456.36771"
+         style="fill:#373832;fill-opacity:1;stroke-width:1.92963207px;">Crust</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:52.58713531px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#373832;fill-opacity:1;stroke:none;stroke-width:1.97201765px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       x="296.51852"
+       y="334.57083"
+       id="text5143"><tspan
+         sodipodi:role="line"
+         id="tspan5141"
+         x="296.51852"
+         y="334.57083"
+         style="stroke-width:1.97201765px;fill:#373832;fill-opacity:1;">Routing</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:47.53684616px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#373832;fill-opacity:1;stroke:none;stroke-width:1.78263175px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       x="175.06772"
+       y="216.48145"
+       id="text5143-5"><tspan
+         sodipodi:role="line"
+         id="tspan5141-3"
+         x="175.06772"
+         y="216.48145"
+         style="stroke-width:1.78263175px;fill:#373832;fill-opacity:1;">Clients</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:45.51791763px;line-height:125%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#373832;fill-opacity:1;stroke:none;stroke-width:1.70692194px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;"
+       x="467.05609"
+       y="216.82254"
+       id="text5143-56"><tspan
+         sodipodi:role="line"
+         id="tspan5141-2"
+         x="467.05609"
+         y="216.82254"
+         style="stroke-width:1.70692194px;fill:#373832;fill-opacity:1;">Vaults</tspan></text>
+  </g>
+</svg>
