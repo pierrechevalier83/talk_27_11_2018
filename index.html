@@ -174,6 +174,16 @@ background-color: #f5f4f2
 
 ---
 layout: true
+name: birds_1
+class: classy_text
+template: textures_3
+background-image: url("assets/images/bird_panel_4.svg"), url("assets/images/bird_panel_1.svg"), url("assets/images/bird_panel_2.svg"), url("assets/images/white.png"), url("assets/images/white.png")
+background-color: #ffffff
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
+
+---
+layout: true
 name: birds_2
 class: classy_text
 template: textures
@@ -990,6 +1000,32 @@ Note that since every time nodes gossip, they actually send everything they have
 By the way, this graph can't be a whole gossip graph stored by a single node, as there is no event that all other events are ancestors of. We should consider this illustration a "God's view", or just a part of a larger graph of a single node that contains some later events.
 
 Also note that some of these gossip events could contain votes, which an observation by a node of something happening in the network. (The first event created by Bob probably does.)
+
+---
+template:birds_1
+## PARSEC
+.fitted-pic[![Seen-0](assets/images/seen_0.svg)]
+
+???
+Once we have the gossip graph, we can start talking about its properties. One of the important concept in such a graph is the concept of an event _seeing_ another event.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Seen-1](assets/images/seen_1.svg)]
+
+???
+Here is an example. We say that a1 _sees_ c0, because c0 is a1's ancestor. There is a caveat here - if a node was malicious and created a _fork_, and both branches of the fork contain ancestors of our event, then we say that it doesn't see any of them. This is an important protection against malicious behaviour - if you try to game the system, you lose all influence you might have had.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Seen-2](assets/images/seen_2.svg)]
+
+???
+Another example: c2 sees b0. This is just to showcase that the event being seen doesn't have to be a direct ancestor of the event seeing it.
 
 ---
 template:birds_3
