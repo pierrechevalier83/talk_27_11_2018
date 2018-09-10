@@ -1028,6 +1028,107 @@ count:false
 Another example: c2 sees b0. This is just to showcase that the event being seen doesn't have to be a direct ancestor of the event seeing it.
 
 ---
+template:birds_2
+## PARSEC
+
+### Supermajority
+
+> A supermajority is a subset of the network<br>
+> containing more than 2/3 of the total number of nodes
+
+???
+Let us now introduce a notion that will be used quite a lot.
+
+The notion of a majority is rather well known. Unfortunately, in the presence of malicious actors, who can constitute up to 1/3 of the network, we cannot rely on just a majority, as a significant portion of it might be the bad guys. Thus, we define something more: a supermajority, which is more than 2/3 of the network. It has two nice properties.
+
+--
+count:false
+#### Properties
+* A supermajority contains a majority of the honest nodes
+
+???
+First, a supermajority will always contain the majority of honest nodes. So whatever a supermajority says, we know that a majority of honest nodes agree.
+
+--
+count:false
+* Two supermajorities _always_ have an honest node in common
+
+???
+Second, two sets of nodes that are supermajorities are guaranteed to have an honest node in common. This second property is something that makes supermajorities a very useful concept.
+
+---
+template:birds_1
+## PARSEC
+.fitted-pic[![Strongly-seen-0](assets/images/strongly_seen_0.svg)]
+
+???
+Another important concept is the one of _strongly seeing_. An event seeing another event can be thought of as a proof that the first event's creator has received the second event and that it wasn't aware of any forks by the second event's creator at that time. Strongly seeing provides something much stronger.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Strongly-seen-1](assets/images/strongly_seen_1.svg)]
+
+???
+To say that event A strongly sees event B, we need event A to see events created by a supermajority of nodes that all see B.
+
+Another possible wording of strongly seeing is: A strongly sees B if there are directed paths from B to A that together pass through events created by a supermajority of nodes. Note that the initial and final events count, too.
+
+In this example a1 strongly sees b0. It sees itself (a1), c0 and b0 itself, all of which see b0. These events are created by Alice, Bob and Carol, so 3 nodes, which are more than 2/3 out of 4.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Strongly-seen-2](assets/images/strongly_seen_2.svg)]
+
+???
+Let's look at another example. We have d1 seeing c2, b1 and a0. Those are events by 4 different creators that all see a0. Thus, d1 strongly sees a0.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Strongly-seen-3](assets/images/strongly_seen_3.svg)]
+
+???
+In this example we look at a2 and a0. The only events seeing a0 that a2 sees are events created by Alice and Bob. These are just 2 out of 4, so not a supermajority, so a2 doesn't strongly see a0.
+
+The reason strongly seeing is so important is because it provides a strong guarantee: if an event strongly sees an event created by node X, no other event can strongly see an event created by X that is on another branch of a fork.
+
+---
+template:birds_2
+## PARSEC
+
+### Strongly seeing
+
+> If event `x` strongly sees event `y`, no other event<br>
+> can strongly see any event by `y`'s creator that is<br>
+> on a different branch of a fork.
+
+???
+Assume they could.
+
+Assume Carol created a fork, and an event by Alice strongly sees event cn, and an event by Bob strongly sees cn'. This means that Alice's event sees events by a supermajority of creators that see cn. Bob's event sees events by a supermajority of creators that see cn'.
+
+---
+template:birds_2
+count:false
+## PARSEC
+
+### Strongly seeing
+
+> If event `x` strongly sees event `y`, no other event<br>
+> can strongly see any event by `y`'s creator that is<br>
+> on a different branch of a fork.
+
+???
+The supermajorities must have an honest node in common - say Dave. Dave would have to have created an event that sees cn and an event that sees cn'. But Dave is honest, so one of those is an ancestor of the other. Say d4 sees cn', and d3 (ancestor of d4) sees cn.
+
+This means that cn is also an ancestor of d4. But by definition of seeing, it follows that d4 can't see either cn or cn', because both branches of the fork contain one of its ancestors. This is a contradiction, because we assumed that d4 sees cn'.
+
+---
 template:birds_3
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/seen_strongly_seen_2.png)]
