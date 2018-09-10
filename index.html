@@ -1143,6 +1143,17 @@ Once aux values are determined, progressing requires a coin flip. In PARSEC, we 
 ---
 template:birds_2
 ## PARSEC
+.fitted-pic[![Common-coin-f-0](assets/images/common-coin.png)]
+
+???
+A common coin is a device that allows independent parties to obtain the same sequence of random bits. The main properties one usually expects from a good common coin are: it should be unpredictable (so you cannot predict the outcome of a flip before actually executing it) and uncontrollable (the parties shouldn't be able to affect the result).
+
+In practice it is usually implemented using threshold cryptography, which makes it too unwieldy for our use case, hence our decision to replace it. Still, it will serve as a good model for explaining the algorithm.
+
+---
+template:birds_2
+count:false
+## PARSEC
 .fitted-pic[![Common-coin-f-0](assets/images/common_coin_false_0.svg)]
 
 ???
