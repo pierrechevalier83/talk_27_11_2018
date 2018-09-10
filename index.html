@@ -1233,6 +1233,33 @@ count:false
 3 out of 4 is a supermajority. a2 is an observer.
 
 ---
+template:birds_2
+## PARSEC
+.fitted-pic[![Meta-election-0](assets/images/meta_election_0.svg)]
+
+???
+Say that multiple nodes created events that are observers. Each observer strongly sees interesting events created by a supermajority, but they might see different supermajorities. How do we get them to agree which of these interesting events should be the next one?
+
+We do this with a process called meta-election. This process allows the nodes to agree about a single binary value for every node: this value means whether the given node's interesting event should be considered for being the next one or not.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Meta-election-1](assets/images/meta_election_1.svg)]
+
+???
+To illustrate, we will follow the process of deciding whether Alice's interesting event will be considered for being the next agreed one.
+
+The process starts with observers, and every observer gets a binary value associated with it. The value says whether this observer can strongly see an interesting event created by the node being the subject of the meta-election.
+
+In our example, Alice's observer can strongly see Alice's interesting event; so can Dave's observer. Bob's and Carol's observers cannot.
+
+Thus, the first estimate is "true" for Alice and Dave, and "false" for Bob and Carol.
+
+Note that the values associated with observers are purely functions of the structure of the graph. No additional data needs to be exchanged - each node can arrive at the same values for every observer independently.
+
+---
 template:birds
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/meta_vote.jpg)]
