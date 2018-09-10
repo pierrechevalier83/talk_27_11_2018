@@ -379,33 +379,25 @@ template: sea_2
 ## Agenda
 --
 count: false
-#### Consensus in the SAFE Network
+#### SAFE Network overview
+--
+count: false
+#### The quest for consensus
 --
 count: false
 #### PARSEC
---
-count: false
- - ##### Gossip graph
---
-count: false
- - ##### Meta-elections
---
-count: false
- - ##### Binary consensus
---
-count: false
- - ##### ABFT consensus
+
 ---
 template: sparks
 
-## Consensus in the SAFE Network
+## SAFE Network overview
 .fitted-pic[![routing](assets/images/routing.svg)]
 
 ---
 template:sparks_2
-## Routing
+## SAFE Network overview
 
-### What it does
+### Routing
 --
 count: false
 - Partitions the network into `sections`
@@ -439,184 +431,25 @@ count: false
 
 - Quorum of agreeing peers
 - Agreement on events and orders
+
 ---
 template:sparks_3
-## Routing
+## SAFE Network overview
 
-### How it does it
+### Routing
+
+- Enables consensus within a section
+
+> How do nodes in a section of the network<br>
+> agree on the order in which events happen?
 --
 count: false
 
-- Pretend everything is a 256 bit int
----
-template:sparks_3
-count: false
-## Routing
-
-### How it does it
-
-- Pretend **everything** is a 256 bit int
-
---
-count: false
- - Computers
---
-count: false
- - Data
----
-template:sparks_4
-## Routing
-
-### How it does it
-
-- Pretend everything is a **256 bit int**
---
-count: false
-
-```
-Between 0 and 115792089237316195423570985008687907853269984665640564039457584007913129639935
-```
-???
- - 2<sup>256</sup>-1
- - ~10<sup>77</sup>
- - ~115 quattuorvigintillion
-  - ~.1% of the number of atoms in the universe
---
-count: false
-can be represented in binary
-
-```
-0101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001010100100101001101000101010000110101000001000001
-```
----
-template:sparks
-## Routing
-
-### How it does it
-
-- Reduce all problems to simple maths
---
-count: false
-
- - Example: which section should this node join?
-```
-node id: 11010010001111100...
-```
----
-template:sparks
-count: false
-## Routing
-### How it does it
-
- - Example: which section should this node join?
-```
-node id: 11010010001111100...
-```
-.center[
-|      |       |       |       |       |       |       |       |
-| :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-|      |       | Left  |       |       | Right |       |       |
-|      |       | 0     |       |       | 1     |       |       |
-|      | Left  | Right |       |       | Left  | Right |       |
-|      | 00    | 01    |       |       | 10    | 11    |       |
-| Left | Right | Left  | Right | Left  | Right | Left  | Right |
-| 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
-]
-
----
-template:sparks
-count: false
-## Routing
-
-### How it does it
-
- - Example: which section should this node join?
-```
-node id: `1`1010010001111100...
-```
-.center[
-|      |       |       |       |       |       |       |       |
-| :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-|      |       | Left  |       |       | **Right** |   |       |
-|      |       | 0     |       |       | **1** |       |       |
-|      | Left  | Right |       |       | Left  | Right |       |
-|      | 00    | 01    |       |       | 10    | 11    |       |
-| Left | Right | Left  | Right | Left  | Right | Left  | Right |
-| 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
-]
----
-template:sparks
-count: false
-## Routing
-
-### How it does it
-
- - Example: which section should this node join?
-```
-node id: 1`1`010010001111100...
-```
-.center[
-|      |       |       |       |       |       |       |       |
-| :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-|      |       | Left  |       |       | **Right** |   |       |
-|      |       | 0     |       |       | **1** |       |       |
-|      | Left  | Right |       |       | Left  | **Right** |   |
-|      | 00    | 01    |       |       | 10    | **11** |      |
-| Left | Right | Left  | Right | Left  | Right | Left  | Right |
-| 000  | 001   | 010   | 011   | 100   | 101   | 110   | 111   |
-]
----
-template:sparks
-count: false
-## Routing
-
-### How it does it
-
- - Example: which section should this node join?
-```
-node id: 11`0`10010001111100...
-```
-.center[
-|      |       |       |       |       |       |       |       |
-| :--: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-|      |       | Left  |       |       | **Right** |   |       |
-|      |       | 0     |       |       | **1** |       |       |
-|      | Left  | Right |       |       | Left  | **Right** |   |
-|      | 00    | 01    |       |       | 10    | **11** |      |
-| Left | Right | Left  | Right | Left  | Right | **Left** | Right |
-| 000  | 001   | 010   | 011   | 100   | 101   | **110**   | 111   |
-]
----
-template:sparks_2
-## Routing
-
-### How it does it
-
- - Example: who should store this data?
-```
-data id: 11010010001111100...
-```
---
-count: false
-.center[The `GROUP_SIZE` closest<br>nodes in xor distance]
-???
-xor space has the desirable property that distances are unique
----
-template:sparks
-## Routing
-
-### How it does it
-
- - Example: how do members of a section agree<br>
-   on the order in which things happen?
---
-count: false
-
-.center.small-pic[![parsec](assets/images/byzantine_army.jpg)]
+.small-pic[![parsec](assets/images/byzantine_army.jpg)]
 ???
 Byzantine Generals problem
 ---
-template: fields_3
+template: fields_2
 ## The quest for consensus
 .fitted-pic[![byzantine](assets/images/byzantine_army.jpg)]
 ???
