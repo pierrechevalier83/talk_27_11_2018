@@ -867,21 +867,129 @@ They do this with cryptograpically signed messages, which means that they can be
 This means that if a node sent you a version of the truth and sent someone else a different version; this node would eventually be caught in their lie.
 
 ---
-template:birds_3
+template:birds_2
 ## PARSEC
 .fitted-pic[![Gossip-graph-0](assets/images/gossip_graph_0.svg)]
 ???
-Let's dive in and see what a gossip graph may look like. This way, I will also be able to explain a couple of interesting concepts related to the gossip graph.
+Let's dive in and see what a gossip graph may look like.
 
-The graph is read from bottom to top. Each circle represent a communication that happened in the network.
+We will start by illustrating how a gossip graph may get generated and then we will use it to explain some related concepts.
 
-Note that some of these gossip events could contain votes, which an observation by a node of something happening in the network.
+We start by introducing our players. We have a network with four members, Alice, Bob, Carol and Dave. They start with nothing, but the situation will change soon.
 
-For instance here, Bob gossiped to Carol and Carol gossiped back to Bob.
-Then, Bob gossiped to Alice and let her know everything she knew.
-This way Alice could sync her graph with Bob's and Carol's.
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-1](assets/images/gossip_graph_1.svg)]
 
-If everyone communicates this way, everyone's graph ends up containing roughly the same information.
+???
+Bob creates his first event (he observed something going on in the network).
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-2](assets/images/gossip_graph_2.svg)]
+
+???
+Bob gossips to Carol, which prompts her to create her own event. Note that she doesn't just store her event, but also the one she got from Bob.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-3](assets/images/gossip_graph_3.svg)]
+
+???
+Now Bob gossips to Alice, too.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-4](assets/images/gossip_graph_4.svg)]
+
+???
+Alice responds to Bob, so Bob creates another event.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-5](assets/images/gossip_graph_5.svg)]
+
+???
+In the meantime, Carol gossips to Dave.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-6](assets/images/gossip_graph_6.svg)]
+
+???
+...and to Alice.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-7](assets/images/gossip_graph_7.svg)]
+
+???
+Dave responds to Carol.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-8](assets/images/gossip_graph_8.svg)]
+
+???
+Carol gossips the event created by Dave's response to Bob.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-9](assets/images/gossip_graph_9.svg)]
+
+???
+Explain how there is some asynchrony going on - Bob sent gossip to Carol before he received new gossip from her, hence the other-parent is an older event.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-10](assets/images/gossip_graph_10.svg)]
+
+???
+Bob sends updated gossip to Alice.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-11](assets/images/gossip_graph_11.svg)]
+
+???
+Carol gossips to Dave.
+
+---
+template:birds_2
+count:false
+## PARSEC
+.fitted-pic[![Gossip-graph-12](assets/images/gossip_graph_12.svg)]
+
+???
+Now let's name all the gossip events. We will call them by the first letter of creator's name and the sequence index, so Alice's events are a0, a1, a2..., Bob's are b0, b1,... etc. (Those are just arbitrary names to focus our attention when we talk about the graph.)
+
+Note that since every time nodes gossip, they actually send everything they have, every node has _exactly_ all the ancestors of its latest event. Since the gossip events contain hashes of their parents, if two nodes have copies of the same single event, they are also guaranteed to have identical copies of all ancestors of this event. We say that their graphs are _consistent_.
+
+By the way, this graph can't be a whole gossip graph stored by a single node, as there is no event that all other events are ancestors of. We should consider this illustration a "God's view", or just a part of a larger graph of a single node that contains some later events.
+
+Also note that some of these gossip events could contain votes, which an observation by a node of something happening in the network. (The first event created by Bob probably does.)
 
 ---
 template:birds_3
