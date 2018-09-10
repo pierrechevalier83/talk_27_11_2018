@@ -1056,6 +1056,8 @@ template:birds_1
 .fitted-pic[![BV-gossip-0](assets/images/bv_gossip_0.svg)]
 
 ???
+Using meta-elections, we reduce the problem of consensus to that of binary consensus. We base our solution on a 2014 paper by Mostefaoui, Hamouna and Raymal titled "Signature-Free Asynchronous Byzantine Consensus with t &lt; n/3 and O(n²) Messages".
+
 The first stage of a meta-election is Binary Value Gossip. At this stage every node basically tries to find out what are the estimates of other nodes in order to suggest a possible decision. Let's look at that in detail.
 
 The whole process consists of determining two variables, called "estimates" and "binary values". Both are sets of binary values (so can be empty, contain 0, contain 1 or contain both). The starting point is estimates = {initial vote}, bin-values = empty.
