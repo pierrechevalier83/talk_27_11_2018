@@ -1395,38 +1395,24 @@ count:true
 And so does d1.
 
 ---
-template:birds
-## PARSEC
-.fitted-pic[![Signatures](assets/images/meta_vote.jpg)]
-???
-The last step is to agree on an order for the interesting event.
-
-This is done by holding a virtual election between observers:
-Since they strongly see interesting events proposed by a supermajority of nodes, they are said to vote yes for each of these nodes and vote no for all other nodes.
-
-This reduces the larger problem of Byzantine consensus to the problem of Binary consensus: reaching consensus on the outcome of a yes or no question.
-
----
 template:birds_3
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/problem_solved.png)]
 ???
-### Binary consensus
-This is a problem that already has an existing elegant solution.
-
-Signature Free Asynchronous Byzantine Consensus with t < n/3 and O(n^2) messages.
-Raynal et all.
-
-We took this solution and adapted it to gossip, which wasn't very difficult and allowed us to improve the complexity from O(n^2) to O(n*log(n)).
+And so the problem of consensus is solved in PARSEC. Except for the detail that we don't actually use or even have a common coin. We use a concrete coin instead.
 
 ---
 template:birds_2
 ## PARSEC
 .fitted-pic[![Signatures](assets/images/concrete.jpg)]
 ???
-Oh, a little detail: the algorithm we used for Binary consensus depends on a common coin, which is an issue for staying asynchronous when there is churn in the network;
+Since a common coin requires complex cryptography and a synchronous period for setup, we opted not to use it. Our idea for a replacement comes from a paper from Silvio Micali published in 2018, named "Byzantine Agreement made Trivial".
 
-so we replaced that step with a concrete coin, which was published in a paper from Silvio Micali in 2018 named "Byzantine Agreement made Trivial".
+Instead of flipping a coin every round, we alternate the rounds between 3 kinds. The first kind of round is one where we force the coin to return true. The second kind forces the coin to false. Those work just as if a common coin returned that value - after all, the result is common, just not very random.
+
+The third kind of round is one with a "genuinely flipped concrete coin". In such a round, every node obtains a random bit, but it's not guaranteed to be common - it's only common with some probability. Fortunately, this turns out to be enough for our purposes.
+
+Also, since a coin round isn't guaranteed to yield a common result, we can't decide in such a round. So, instead of deciding, we only update the estimates, like in a common coin round with a disagreeing flip result.
 
 ---
 template:birds
