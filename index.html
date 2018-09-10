@@ -1157,54 +1157,23 @@ The supermajorities must have an honest node in common - say Dave. Dave would ha
 This means that cn is also an ancestor of d4. But by definition of seeing, it follows that d4 can't see either cn or cn', because both branches of the fork contain one of its ancestors. This is a contradiction, because we assumed that d4 sees cn'.
 
 ---
-template:birds_3
+template:birds_2
 ## PARSEC
-.fitted-pic[![Signatures](assets/images/seen_strongly_seen_2.png)]
+.fitted-pic[![Interesting](assets/images/interesting_event.svg)]
 ???
-To be able to analyse these gossip graphs, it is useful to define a couple of relationships between events.
-
-This graph demonstrates the concept of seeing.
-
-A more recent gossip event (like d_4 here) is said to see an older gossip event (for instance b_0) if b_0 is an ancestor of d_4. So you can trace a path in the graph that goes from b_0 to d_4, only going upwards.
-
-Note that the history from each node's point of view must be linear. If it isn't, it's called a fork and it proves that the author of the forked events is malicious.
-
-In that case, not only will the node be punished, but also none of the branches of the forks will be seen by any gossip event that descends from both.
-
----
-template:birds_3
-## PARSEC
-.fitted-pic[![Signatures](assets/images/seen_strongly_seen_3.png)]
-???
-Another crucial concept when analysing the gossip graph is that of strongly seeing.
-
-A gossip event strongly sees another gossip event if it can see it and the directed paths between both events cover over 2/3 of the nodes.
-
-For instance here, Alice's event: a_1 sees b_0 and the paths between a_1 and b_0 cover events created by Alice, Bob and Dave.
-
-This definition is very important because it represents the point of no return after which a rumour is unstopable by any malicious nodes.
-
-The reason we only require over 2/3 of the nodes (a supermajority) and not all nodes is so that 1/3 - 1 nodes can be malicious and completely stop participating in the gossip protocol without ever affecting progress.
-
----
-template:birds
-## PARSEC
-.fitted-pic[![Signatures](assets/images/interesting_event.jpg)]
-???
-Now, as I mentionned when describing gossip, some of the events contain votes from nodes.
+Now, as we mentioned when describing gossip graphs, some of the events contain votes from nodes.
 
 For instance Alice may learn that Eric would like to join the network and then vote for this.
 
-We could reach consensus on the order of which one of these votes, and that would totally work; but for us, in the SAFE Network, we only care about votes that have reached quorum.
+We could reach consensus on the order of any one of these votes, and that would totally work; but for us, in the SAFE Network, we only care about votes that have reached quorum. So in our case, we will only be interested in events that **see** **gossip events** containing **votes** for a given **network event** created by a supermajority of nodes.
 
-So we define the concept of an interesting event which is a **gossip event** which **sees** **gossip events** created by a **supermajority** of **nodes** that contain **votes** for a given **network event**.
-
-We will only reach consensus on these as they're the only interesting events for us.
+But our case is just our case - other users of PARSEC may define interesting events differently. What matters is that some of the events are interesting and this is the starting point for the rest of the algorithm.
 
 ---
-template:birds_2
+template:birds_1
 ## PARSEC
-.fitted-pic[![Signatures](assets/images/observer.png)]
+.fitted-pic[![Observer-0](assets/images/observer_0.svg)]
+
 ???
 Building on this concept of strongly seen, we can define the concept of an observer.
 
@@ -1213,6 +1182,55 @@ The technical definition is: a gossip event that strongly sees interesting gossi
 But what it means is that after this gossip event, we know that the information in the graph has been propagated beyond the point of no return and cannot be censored by a malicious actor.
 
 This guarentees consensus on these events; but doesn't define an order.
+
+Let's see an example.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Observer-1](assets/images/observer_1.svg)]
+
+???
+Say we want to check whether a2 is an observer. We must check which interesting events this event can strongly see.
+
+It can't strongly see the interesting event created by Alice; so, that's 0/1.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Observer-2](assets/images/observer_2.svg)]
+
+???
+It can strongly see Bob's interesting event. We are at 1/2.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Observer-3](assets/images/observer_3.svg)]
+
+???
+It can also strongly see Carol's interesting event, which brings us to 2/3.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Observer-4](assets/images/observer_4.svg)]
+
+???
+And finally, it can also strongly see Dave's interesting event. So it can strongly see interesting events created by 3 out of 4 nodes.
+
+---
+template:birds_1
+count:false
+## PARSEC
+.fitted-pic[![Observer-5](assets/images/observer_5.svg)]
+
+???
+3 out of 4 is a supermajority. a2 is an observer.
 
 ---
 template:birds
