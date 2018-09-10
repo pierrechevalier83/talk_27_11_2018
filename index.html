@@ -1080,7 +1080,9 @@ count:false
 * Two supermajorities _always_ have an honest node in common
 
 ???
-Second, two sets of nodes that are supermajorities are guaranteed to have an honest node in common. This second property is something that makes supermajorities a very useful concept.
+Second, any two supermajorities are guaranteed to have an honest node in common. This second property is something that makes supermajorities a very useful concept.
+
+Of course, we could get those two properties by requiring 100% of nodes in a supermajority - but then the malicious nodes could stop us from collecting one. In this case, as long as the malicious nodes constitute less than 1/3 of the network, we will be fine.
 
 ---
 template:birds_2
