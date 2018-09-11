@@ -1572,6 +1572,21 @@ There is also an option for the malicious nodes to just stop responding and try 
 But let us remember that we expect to have less than N/3 malicious nodes, and we always require just a supermajority of responses for progress. Since we expect correct nodes to respond, progress will be made as long as we receive messages from them eventually (with some caveats related to the concrete coin and responsiveness threshold - there is still a potential foothold for an attacker there, one we intend to close. We would welcome contributions in this area!)
 
 ---
+template:sea_2
+## Malice
+
+.fitted-pic[![Sybil](assets/images/BurlyBrawl.png)]
+
+???
+And the final kind of malice that we will mention is the so-called Sybil attacks. This class of attacks is based on a malicious party creating multiple fake identities controlled by them, and then using them to take control of the network.
+
+A famous solution against the Sybil attacks is the Proof of Work, which gave rise to Bitcoin and pretty much all the cryptocurrencies in existence.
+
+PARSEC doesn't have measures against Sybil attacks in itself.
+* Routing: node ageing, random relocations, proof of resource, safecoin
+* **punishing for malicious behaviour**
+
+---
 template:sparks
 ## Are we there yet?
 --
