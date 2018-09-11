@@ -1219,14 +1219,57 @@ count: false
 ???
 Once an event has non-empty bin-values, it gets assigned an aux value. This aux value is the first value that made it into bin-values. So, a2 has aux=false, while b2, c2 and d1 have aux=true.
 
-Once aux values are determined, progressing requires a coin flip. In PARSEC, we use a concrete coin for simplicity, but it will be easier to explain the algorithm using a proper common coin.
+Before we go to the next step, let us take a short dive into a formal proof of one of the properties of BV gossip.
 
 ---
 template:birds_2
 ## PARSEC
+
+### Fact
+
+> If `v` is in bin-values of an event, there have been<br>
+> at least N/3 meta-votes for `v`
+
+???
+The fact quoted on the slide is actually a part of Lemma 3.9 in the whitepaper. We want to show you the proof, because it is quite straightforward at this point and it showcases the kind of reasoning you would encounter when reading the whitepaper.
+
+--
+count:false
+
+#### Proof
+
+* Assume `&lt;N/3` votes for v
+???
+We will prove this fact by contradiction. Let's assume that there were less than N/3 votes for v.
+
+--
+count:false
+* No node that voted `~v` will add `v` to estimates
+???
+Nodes that initially voted ~v would only add v to estimates if they saw at least N/3 votes for v - but this can't happen initially.
+
+--
+count:false
+* There will be less than `N/3` estimates for v
+???
+Since it can't happen in the initial configration, the number of estimates for v won't grow and nodes that estimated ~v will never add v.
+
+--
+count:false
+* Any supermajority must contain `&gt;N/3` `~v` and `<N/3` `v`
+???
+When the time comes to update bin-values (that is, an event sees a supermajority of agreeing estimates), the only value that can be added is ~v - there are still less than N/3 estimates for v in the whole network, so there can't be a supermajority for v. This means that only ~v can be added to bin-values.
+
+---
+template:birds_1
+## PARSEC
 .fitted-pic[![Common-coin-f-0](assets/images/common-coin.png)]
 
 ???
+This concludes the proof. Let us now go back to the decision process and see what happens after BV gossip.
+
+Once aux values are determined, progressing requires a coin flip. In PARSEC, we use a concrete coin for simplicity, but it will be easier to explain the algorithm using a proper common coin.
+
 A common coin is a device that allows independent parties to obtain the same sequence of random bits. The main properties one usually expects from a good common coin are: it should be unpredictable (so you cannot predict the outcome of a flip before actually executing it) and uncontrollable (the parties shouldn't be able to affect the result).
 
 In practice it is usually implemented using threshold cryptography, which makes it too unwieldy for our use case, hence our decision to replace it. Still, it will serve as a good model for explaining the algorithm.
