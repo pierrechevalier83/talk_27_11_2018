@@ -1367,7 +1367,9 @@ And so does d1.
 
 Alice is still left having to progress through another round of consensus - her later events will treat the ones that made a decision as if they were voting for the decided value, which will make her create a deciding event eventually, too.
 
-There is one last thing to cover - that is, once we reached a decision on all meta-elections, how do we decide the next event in order?
+This would conclude deciding whether we will take Alice's interesting event into account. There would also be analogous meta-elections about Bob, Carol and Dave.
+
+Once those are concluded, there will be just one last thing to cover - that is, how do we proceed from N instances of binary consensus to deciding the next event in order?
 
 ---
 template:birds_2
@@ -1375,7 +1377,7 @@ template:birds_2
 .fitted-pic[![Approved](assets/images/approved.png)]
 
 ???
-Once we reach a decision on all N meta-elections (remember that there is a separate meta-election for every node in the network), we know which nodes' events we should be taking into account.
+Once we reach a decision on all N meta-elections, we know which nodes' events we should be taking into account.
 
 So, we look for interesting events created by the nodes that got a "true" in the meta-election. For every node, we take the oldest interesting event that hasn't been ordered yet. This gives us a set of candidates.
 
