@@ -1358,12 +1358,28 @@ c2, like b2, sees an agreeing supermajority and decides.
 
 ---
 template:birds_1
-count:true
+count:false
 ## PARSEC
 .fitted-pic[![Common-coin-t-4](assets/images/common_coin_true_4.svg)]
 
 ???
 And so does d1.
+
+Alice is still left having to progress through another round of consensus - her later events will treat the ones that made a decision as if they were voting for the decided value, which will make her create a deciding event eventually, too.
+
+There is one last thing to cover - that is, once we reached a decision on all meta-elections, how do we decide the next event in order?
+
+---
+template:birds_2
+## PARSEC
+.fitted-pic[![Approved](assets/images/approved.png)]
+
+???
+Once we reach a decision on all N meta-elections (remember that there is a separate meta-election for every node in the network), we know which nodes' events we should be taking into account.
+
+So, we look for interesting events created by the nodes that got a "true" in the meta-election. For every node, we take the oldest interesting event that hasn't been ordered yet. This gives us a set of candidates.
+
+From this set, we just take the event that has been repeated (voted for) the most times. If there is a tie, we can use an arbitrary tie-breaker rule. In order to make it as unpredictable as possible, we can for example do this: take the hashes of all tied events, concatenate them in a lexicographic order, hash the result and then sort by xor-distance of the event's hash from this hash. The one that comes out on top will be the next agreed event.
 
 ---
 template:birds_3
