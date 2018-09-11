@@ -164,6 +164,16 @@ background-color: #f2e14c
 
 ---
 layout: true
+name: sea_3
+class: classy_text
+template: textures_2
+background-image: url("assets/images/texture_1.png"), url("assets/images/texture_3.png"), url("assets/images/texture_2.png"), url("assets/images/yellow.png"), url("assets/images/yellow.png")
+background-color: #f2e14c
+.logo[![logo](assets/images/logo.svg)]
+<br><br><br>
+
+---
+layout: true
 name: birds
 class: classy_text
 template: textures_3
@@ -1507,7 +1517,7 @@ One of the main intended features of PARSEC is that it is Byzantine Fault Tolera
 We listed some of the more obvious possibilities of malicious behaviour. There are probably also multiple non-obvious ones, but the algorithm is proven correct, so they should still be handled properly.
 
 ---
-template:sea_2
+template:sea_3
 ## Malice
 
 ### Forks
@@ -1516,7 +1526,7 @@ template:sea_2
 We've talked briefly about forks before and how the definition of seeing takes influence away from a node creating forks. This is a part of our methods of countering forks, but it's not the whole story.
 
 ---
-template:sea_2
+template:sea_3
 count:false
 ## Malice
 
@@ -1530,7 +1540,7 @@ Our first line of defense is at the level of observers. Imagine that Carol forke
 Requiring strongly seeing mitigates that. If Alice's observer strongly sees X, Bob's observer cannot strongly see Y because of the properties of strongly seeing. It will either strongly see X or nothing at all. The problem has been mitigated.
 
 ---
-template:sea_2
+template:sea_3
 count:false
 ## Malice
 
@@ -1561,7 +1571,7 @@ Let us remember that all events contain hashes of their parents. The hashes have
 And what about pretending to send us events from someone else? Well, every event is cryptographically signed. There is no known way for a node to be able to forge a signature without having the other node's private key, so as long as everybody protects their keys, impersonation is not an option, either.
 
 ---
-template:sea_2
+template:sea_3
 ## Malice
 
 .fitted-pic[![Stalling](assets/images/stalling.jpg)]
