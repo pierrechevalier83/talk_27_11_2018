@@ -1402,6 +1402,72 @@ Instead of flipping a coin every round, we alternate the rounds between 3 kinds.
 The third kind of round is one with a "genuinely flipped concrete coin". In such a round, every node obtains a random bit, but it's not guaranteed to be common - it's only common with some probability. Fortunately, this turns out to be enough for our purposes.
 
 Also, since a coin round isn't guaranteed to yield a common result, we can't decide in such a round. So, instead of deciding, we only update the estimates, like in a common coin round with a disagreeing flip result.
+---
+template:birds_3
+## PARSEC
+
+### Gradient leadership based flip
+.fitted-pic[![gradient leadership](assets/images/gradient_leadership.png)]
+???
+Assume we can rank all the nodes for any meta election.
+Also assume we could detect an unresponsive node.
+
+We could then pick the first leader and use the gossip event that carries their auxiliary value as the source of unpredictable coin value.
+
+Remember that the gossip event that carries a node’s auxiliary value is unpredictable by a malicious node before the honest node this node starts gossiping it. That makes it fit a crucial requirement of a concrete coin.
+
+If we didn’t receive that gossip event and detected that the most leader node was unresponsive, we could  then pick any number as the value wouldn’t need to be common or unpredictable.
+We arbitrarily decide to pick gossip event carrying the auxiliary value from the most leader node we see.
+
+So we now have two remaining tasks:
+Assigning a leadership rank to each node.
+Detecting a node that’s unresponsive.
+
+---
+template:birds
+## PARSEC
+
+### Gradient leadership
+
+Sort the nodes per xor distance between
+--
+count:false
+* The hash of their public identifier<br>
+And
+--
+count:false
+* The `round hash` obtained by hashing together
+--
+count:false
+  * The hash of the public identifier of the node that’s subject<br>of the meta vote
+--
+count:false
+  * The hash of the latest consensused events
+--
+count:false
+  * The round number’s hash
+
+---
+template:birds_2
+## PARSEC
+
+### Responsiveness threshold
+
+- Gossip requests and responses
+--
+count:false
+- A request must be answered by a response
+--
+count:false
+- Requests are sent periodically by honest nodes
+--
+count:false
+- Wait for `responsiveness_threshold` responses<br>to our requests
+???
+Then if we haven't heard from the most leader, pick the next most leader
+--
+count:false
+- Assumption: variability in response time of correct<br>nodes is bounded
 
 ---
 template:birds
