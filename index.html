@@ -382,11 +382,22 @@ template: sea
 count: false
 
 ???
+B:
+
+Hi, I'm Bart
+
+I'm Pierre
+
+We're both members of the routing team at MaidSafe, so we're part of the team that invented the PARSEC consensus algorithm.
+
+We're happy to be here at this "work on blockchain" event to present our blockchain-less technology.
 
 ---
 template: sea_2
 
 ## Agenda
+???
+P:
 --
 count: false
 #### SAFE Network overview
@@ -408,6 +419,12 @@ template: sparks
 
 ## SAFE Network overview
 .fitted-pic[![routing](assets/images/routing.svg)]
+???
+B:
+
+Layers
+
+Only 1 level of abstraction
 
 ---
 template:sparks_2
@@ -422,7 +439,7 @@ count: false
 - Decides which `nodes` belong in which `sections`
 --
 count: false
-- Assigns a `close group` for each data
+- Assigns a `close group` for each piece of data
 ???
 
 - Deduplication
@@ -458,6 +475,17 @@ template:sparks_3
 
 > How do nodes in a section of the network<br>
 > agree on the order in which events happen?
+???
+
+Why do we need to answer this?
+
+Typically:
+
+Double spend
+
+2 big responsibilities:
+- Maintain network topology
+- Be stewards of data
 --
 count: false
 
@@ -475,7 +503,10 @@ A group of generals of the byzantine army are camped with their troops around an
 
 The problem is to find an algorithm to ensure that the loyal generals will reach agreement.
 
-This problem seems deceptively simple, but it has been extensively studied in the last 20 years and better and better solutions keep coming up.
+This problem seems deceptively simple, but it has been extensively studied in the last few decades and better and better solutions keep coming up.
+
+You guys in the blockchain space are probably familiar with this as the blockchain can be seen as a practical solution to this problem.
+
 
 ---
 template: fields_2
@@ -575,7 +606,6 @@ Even better if someone else already solved these smaller maths problems for you 
 
 In this section, I'll explain some of these smaller maths problems for the case of consensus.
 
-It's gonna be really boring, so I thought I would reveal the features we gain from this exercise so hopefully that keeps you motivated to listen to my monotone lecture :)
 ---
 template:birds_2
 ## PARSEC
@@ -608,7 +638,7 @@ count: false
 ???
 The algorithm can operate in a completely permission-less setting.
 The only requirement is that less than a third of the participants at any time are malicious, which we guarentee in the SAFE Network with a number of Sybil protection measures such as node ageing.
-Nodes can join a section and leave it without affecting consensus and without requiring any syncrhonous step.
+Nodes can join a section and leave it without affecting consensus and without requiring any synchronous step.
 --
 count: false
 * Open Source ✓
@@ -869,6 +899,12 @@ count:false
 .fitted-pic[![Gossip-graph-12](assets/images/gossip_graph_12.svg)]
 
 ???
+
+- Names
+- consistency
+- god view
+- votes/observations
+
 Now let's name all the gossip events. We will call them by the first letter of creator's name and the sequence index, so Alice's events are a0, a1, a2..., Bob's are b0, b1,... etc. (Those are just arbitrary names to focus our attention when we talk about the graph.)
 
 Note that since every time nodes gossip, they actually send everything they have, every node has _exactly_ all the ancestors of its latest event. Since the gossip events contain hashes of their parents, if two nodes have copies of the same single event, they are also guaranteed to have identical copies of all ancestors of this event. We say that their graphs are _consistent_.
@@ -887,8 +923,7 @@ template:birds_1
 Once we have the gossip graph, we can start talking about its properties. One of the important concept in such a graph is the concept of an event _seeing_ another event.
 
 ---
-template:birds_1
-count:false
+template:birds_2
 ## PARSEC
 .fitted-pic[![Seen-1](assets/images/seen_1.svg)]
 
@@ -896,7 +931,7 @@ count:false
 Here is an example. We say that a1 _sees_ c0, because c0 is a1's ancestor. There is a caveat here - if a node was malicious and created a _fork_, and both branches of the fork contain ancestors of our event, then we say that it doesn't see any of them. This is an important protection against malicious behaviour - if you try to game the system, you lose all influence you might have had. We will expand on that in a moment.
 
 ---
-template:birds_1
+template:birds_2
 count:false
 ## PARSEC
 .fitted-pic[![Seen-2](assets/images/seen_2.svg)]
@@ -905,7 +940,7 @@ count:false
 Another example: c2 sees b0. This is just to showcase that the event being seen doesn't have to be a direct ancestor of the event seeing it.
 
 ---
-template:birds_2
+template:birds_1
 ## PARSEC
 .fitted-pic[![Fork](assets/images/fork.jpg)]
 
@@ -914,7 +949,6 @@ We mentioned forks before...
 
 ---
 template:birds_2
-count:false
 ## PARSEC
 .fitted-pic[![Fork-0](assets/images/fork_0.svg)]
 
@@ -971,7 +1005,7 @@ Second, any two supermajorities are guaranteed to have an honest node in common.
 Of course, we could get those two properties by requiring 100% of nodes in a supermajority - but then the malicious nodes could stop us from collecting one. In this case, as long as the malicious nodes constitute less than 1/3 of the network, we will be fine.
 
 ---
-template:birds_1
+template:birds_2
 ## PARSEC
 .fitted-pic[![Strongly-seen-0](assets/images/sauron.png)]
 
@@ -979,8 +1013,7 @@ template:birds_1
 Another important concept is the one of _strongly seeing_. An event seeing another event can be thought of as a proof that the first event's creator has received the second event and that it wasn't aware of any forks by the second event's creator at that time. Strongly seeing provides something much stronger.
 
 ---
-template:birds_2
-count:false
+template:birds_1
 ## PARSEC
 .fitted-pic[![Strongly-seen-1](assets/images/strongly_seen_1.svg)]
 
@@ -992,7 +1025,7 @@ Another possible wording of strongly seeing is: A strongly sees B if there are d
 In this example a1 strongly sees b0. It sees itself (a1), c0 and b0 itself, all of which see b0. These events are created by Alice, Bob and Carol, so 3 nodes, which are more than 2/3 out of 4.
 
 ---
-template:birds_2
+template:birds_1
 count:false
 ## PARSEC
 .fitted-pic[![Strongly-seen-2](assets/images/strongly_seen_2.svg)]
@@ -1001,7 +1034,7 @@ count:false
 Let's look at another example. We have d1 seeing c2, b1 and a0. Those are events by 4 different creators that all see a0. Thus, d1 strongly sees a0.
 
 ---
-template:birds_2
+template:birds_1
 count:false
 ## PARSEC
 .fitted-pic[![Strongly-seen-3](assets/images/strongly_seen_3.svg)]
@@ -1012,7 +1045,7 @@ In this example we look at a2 and a0. The only events seeing a0 that a2 sees are
 The reason strongly seeing is so important is because it provides a strong guarantee: if an event strongly sees an event created by node X, no other event can strongly see an event created by X that is on another branch of a fork.
 
 ---
-template:birds_1
+template:birds_2
 ## PARSEC
 
 ### Strongly seen
@@ -1027,7 +1060,7 @@ Assume they could.
 Assume Carol created a fork, and an event by Alice strongly sees event cn, and an event by Bob strongly sees cn'. This means that Alice's event sees events by a supermajority of creators that see cn. Bob's event sees events by a supermajority of creators that see cn'.
 
 ---
-template:birds_1
+template:birds_2
 count:false
 ## PARSEC
 
@@ -1043,7 +1076,7 @@ The supermajorities must have an honest node in common - say Dave. Dave would ha
 This means that cn is also an ancestor of d4. But by definition of seeing, it follows that d4 can't see either cn or cn', because both branches of the fork contain one of its ancestors. This is a contradiction, because we assumed that d4 sees cn'.
 
 ---
-template:birds_2
+template:birds_1
 ## PARSEC
 .fitted-pic[![Interesting](assets/images/interesting_event.svg)]
 ???
@@ -1056,7 +1089,7 @@ We could reach consensus on the order of any one of these votes, and that would 
 But our case is just our case - other users of PARSEC may define interesting events differently. What matters is that some of the events are interesting and this is the starting point for the rest of the algorithm.
 
 ---
-template:birds_1
+template:birds_2
 ## PARSEC
 .fitted-pic[![Observer-0](assets/images/observer.jpg)]
 
@@ -1073,7 +1106,6 @@ Let's see an example.
 
 ---
 template:birds_1
-count:false
 ## PARSEC
 .fitted-pic[![Observer-1](assets/images/observer_1.svg)]
 
@@ -1292,7 +1324,6 @@ In practice it is usually implemented using threshold cryptography, which makes 
 
 ---
 template:birds_2
-count:false
 ## PARSEC
 .fitted-pic[![Common-coin-f-0](assets/images/common_coin_false_0.svg)]
 
