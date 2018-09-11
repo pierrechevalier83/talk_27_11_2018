@@ -1542,6 +1542,30 @@ Imagine that malicious nodes found a way of arranging gossip so that a part of h
 But they have to see a supermajority. For one node to see a supermajority of false values, and another to see a supermajority of true values, an honest node would have to vote both true and false - remember, two supermajorities always have an honest node in common! This means that we cannot reach two different decisions even in the presence of forks.
 
 ---
+template:sea_2
+## Malice
+
+.fitted-pic[![Forgery](assets/images/forgery.jpg)]
+
+???
+Another possible malicious behaviour is forgery. A node could try to send us an event that isn't actually a part of the graph, or to pretend that somebody else created some event.
+
+Let us remember that all events contain hashes of their parents. The hashes have the nice property that it's hard to find data that hashes to a given value. This means that if we receive a forged event, we won't find a place for it in the graph and will know immediately that something is not right. That's one thing.
+
+And what about pretending to send us events from someone else? Well, every event is cryptographically signed. There is no known way for a node to be able to forge a signature without having the other node's private key, so as long as everybody protects their keys, impersonation is not an option, either.
+
+---
+template:sea_2
+## Malice
+
+.fitted-pic[![Stalling](assets/images/stalling.jpg)]
+
+???
+There is also an option for the malicious nodes to just stop responding and try to stall the progress of the network.
+
+But let us remember that we expect to have less than N/3 malicious nodes, and we always require just a supermajority of responses for progress. Since we expect correct nodes to respond, progress will be made as long as we receive messages from them eventually (with some caveats related to the concrete coin and responsiveness threshold - there is still a potential foothold for an attacker there, one we intend to close. We would welcome contributions in this area!)
+
+---
 template: the_end
 # Thank you!
 .center[
