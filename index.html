@@ -389,6 +389,9 @@ count: false
 --
 count: false
 #### Malice
+--
+count: false
+#### Are we there yet?
 
 ---
 template: sparks
@@ -1568,6 +1571,36 @@ There is also an option for the malicious nodes to just stop responding and try 
 
 But let us remember that we expect to have less than N/3 malicious nodes, and we always require just a supermajority of responses for progress. Since we expect correct nodes to respond, progress will be made as long as we receive messages from them eventually (with some caveats related to the concrete coin and responsiveness threshold - there is still a potential foothold for an attacker there, one we intend to close. We would welcome contributions in this area!)
 
+---
+template:sparks
+## Are we there yet?
+--
+count:false
+* PARSEC whitepaper ✓
+  * [bit.ly/parsec-whitepaper](bit.ly/parsec-whitepaper)
+--
+count:false
+* Rust implementation ⚙
+  * [github.com/maidsafe/parsec](github.com/maidsafe/parsec)
+  * Handles static membership ✓
+  * Dynamic membership ⚙
+  * Production ready ⚙
+???
+Production:
+* more tests
+* more extensive documentation
+* performance
+--
+count:false
+* SAFE Network ⚙
+  * [safenetwork.tech/timeline](safenetwork.tech/timeline)
+  * Alpha 2 ✓
+  * Alpha 3 ⚙
+???
+Alpha 2: demonstrates browser: DApps API
+You can play with it
+
+Alpha 3: working routing vaults from home
 ---
 template: the_end
 # Thank you!
