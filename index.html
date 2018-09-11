@@ -1489,6 +1489,58 @@ We already coded it up in a static network and are now expending it to handle ch
 template:sea_2
 ## Malice
 
+* Forks
+* Event forging
+* Stalling
+* Sybil attacks
+* ...
+
+???
+One of the main intended features of PARSEC is that it is Byzantine Fault Tolerant. This means that it will behave correctly even when faced with various kinds of malicious behaviour. We will tell you now about some specific kinds of malice and how the design of PARSEC prevents them.
+
+We listed some of the more obvious possibilities of malicious behaviour. There are probably also multiple non-obvious ones, but the algorithm is proven correct, so they should still be handled properly.
+
+---
+template:sea_2
+## Malice
+
+### Forks
+
+???
+We've talked briefly about forks before and how the definition of seeing takes influence away from a node creating forks. This is a part of our methods of countering forks, but it's not the whole story.
+
+---
+template:sea_2
+count:false
+## Malice
+
+### Forks
+
+* Observers: require strongly seeing interesting events
+
+???
+Our first line of defense is at the level of observers. Imagine that Carol forked the graph and created interesting events X and Y on two branches. Alice's observer sees event X, and Bob's - event Y. After the meta-election, Carol is decided to be considered for the next agreed event. And suddenly Alice thinks that this translates into a vote for X, and Bob that it's a vote for Y. They agree about whose votes to use, but not what votes there are!
+
+Requiring strongly seeing mitigates that. If Alice's observer strongly sees X, Bob's observer cannot strongly see Y because of the properties of strongly seeing. It will either strongly see X or nothing at all. The problem has been mitigated.
+
+---
+template:sea_2
+count:false
+## Malice
+
+### Forks
+
+* Observers: require strongly seeing interesting events
+
+* Decisions: require a supermajority of agreeing values
+
+???
+The second line of defense is requiring supermajorities in various places.
+
+Imagine that malicious nodes found a way of arranging gossip so that a part of honest nodes see them as having aux values of true, and another part see them as having aux=false. It would be a pain if one honest node saw enough true values to decide true, and another one enough false values to decide false. Agreement would fail.
+
+But they have to see a supermajority. For one node to see a supermajority of false values, and another to see a supermajority of true values, an honest node would have to vote both true and false - remember, two supermajorities always have an honest node in common! This means that we cannot reach two different decisions even in the presence of forks.
+
 ---
 template: the_end
 # Thank you!
