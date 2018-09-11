@@ -669,7 +669,7 @@ struct Event<T: NetworkEvent, P: PublicId> {
     signature: P::Signature,
     self_parent: Option<Hash>,
     other_parent: Option<Hash>,
-    observation: Option<Vote<T, P>,
+    observation: Option<Vote<T, P>>,
 }
 ```
 ---
@@ -685,7 +685,7 @@ struct Event<T: NetworkEvent, P: PublicId> {
 *   signature: P::Signature,
     self_parent: Option<Hash>,
     other_parent: Option<Hash>,
-    observation: Option<Vote<T, P>,
+    observation: Option<Vote<T, P>>,
 }
 ```
 ---
@@ -701,7 +701,7 @@ struct Event<T: NetworkEvent, P: PublicId> {
     signature: P::Signature,
 *   self_parent: Option<Hash>,
     other_parent: Option<Hash>,
-    observation: Option<Vote<T, P>,
+    observation: Option<Vote<T, P>>,
 }
 ```
 ---
@@ -717,7 +717,7 @@ struct Event<T: NetworkEvent, P: PublicId> {
     signature: P::Signature,
     self_parent: Option<Hash>,
 *   other_parent: Option<Hash>,
-    observation: Option<Vote<T, P>,
+    observation: Option<Vote<T, P>>,
 }
 ```
 ---
@@ -733,7 +733,7 @@ struct Event<T: NetworkEvent, P: PublicId> {
     signature: P::Signature,
     self_parent: Option<Hash>,
     other_parent: Option<Hash>,
-*   observation: Option<Vote<T, P>,
+*   observation: Option<Vote<T, P>>,
 }
 ```
 ---
