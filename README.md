@@ -1,12 +1,10 @@
-Presentation about PARSEC for Work on Blockchain meetup
+Presentation about PARSEC/Rust for Rust London User Group
 
-PARSEC, Deep Dive,
+Rust: Beyond the language; an ecosystem
 
-11/09/2018.
+27/11/2018.
 
-Presenters:
-
-Bartłomiej Kamiński
+Presenter:
 
 Pierre Chevalier
 
