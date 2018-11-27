@@ -39,6 +39,10 @@
         color: #333333;
         max-width: 90%;
       }
+      .grey_text {
+        color: #cccccc;
+        max-width: 90%;
+      }
       .white_text {
         color: white;
         max-width: 90%;
@@ -84,6 +88,7 @@ layout: true
 name: title
 
 class:center
+.logo.left[![rust_logo}(assets/images/rust_logo.svg)]
 <br><br><br><br>
 
 ---
@@ -347,27 +352,555 @@ class:center
 
 ---
 template: sea
-# Rust: Beyond the language, an ecosystem
-<br><br><br><br>
+# Rust: Beyond the language; an ecosystem
+<br><br><br>
 ### Rust London User Group
-### 27th of November 2018
+#### 27th of November 2018
+#### Pierre Chevalier
+???
+Hi, I'm Pierre Chevalier, I lead the routing team at Maidsafe
+
+We all know the obvious reasons to use rust: the speed, safety, concurrency trifecta.
+In this talk, I will use my experience bringing an algorithm from an idea to production code in rust to expose many of the non-obvious ways in which the Rust ecosystem will help your project reach success.
+
+---
+template: sea
+
+## Some context
+## .grey_text[Collaboration/Openness]
+## .grey_text[Privacy/Security]
+## .grey_text[Inclusiveness/Respect]
+
+---
+
+template: sea_2
+# Maidsafe
+
+.center.small-pic[![maidsafe](assets/images/maidsafe_logo.png)]
+???
+This is how it's spelled. Don't ask me why.
+
+---
+template: sea_3
+# We're building the new internet
+.center.small-pic[![maidsafe](assets/images/logo.svg)]
+???
+We're building the new internet: a network centered around human values.
+
+SAFE Network: Secure Access For Everyone
+
+Respect of its users. Your data will not be violently desacrated.
+
 ---
 template: sea_2
-.small-pic[![maidsafe](assets/images/logo.svg)]
+#SAFE Network
+##Secure Access For Everyone
 
+???
+A Network built around human values
+--
+count:false
+* Privacy/Security
+
+--
+count:false
+* Openness/Collaboration
+
+--
+count:false
+* Inclusiveness/Respect
+???
+Freedom of expression
+
+---
+template: sea_3
+
+# How?
+
+--
+count: false
+* Decentralized peer-to-peer network
+
+--
+count: false
+* Autonomous
+
+???
+The protocol is all that's needed: no authority required
+--
+count: false
+* Everything is encrypted from first hop
+
+???
+Encryption key never leaves your machine
+--
+count: false
+* No server
+
+???
+No individual computer can access your data
+--
+count: false
+* Powered by blockchain-less consensus
+
+--
+count: false
+* Lubricated by SAFEcoin
+???
+.center.small-pic[![rust](assets/images/rust_logo.svg)]
+
+---
+template: sea_2
+# Want to learn more?
+.fitted-pic[![moar](assets/images/moar.png)]
+???
+There is a lot to say about the SAFE Network, but that's not the topic of this talk.
+I'm just giving you a bit of context for what's coming.
+---
+count: false
+template: sea_2
+# Want to learn more?
+
+### https://safenetwork.tech/
+
+--
+count: false
+### https://safenetworkprimer.com/
+
+--
+count: false
+### https://safenetforum.org/
+
+---
+template: sea_3
+# PARSEC
+
+.fitted-pic[![moar](assets/images/falcon.png)]
+???
+Now you have an idea of what the company is about, let's focus on one component of it all: PARSEC.
+
+PARSEC solves a well-known problem in decentralised, distributed computer networks: how can individual computers (nodes) in a system reliably communicate truths (in other words, events that have taken place on the network) to each other where a proportion of the nodes are malicious (Byzantine) and looking to disrupt the system. Or to put it another way: how can a group of computers agree on which transactions have correctly taken place and in which order?
+
+---
+template: sea_2
+# Whitepaper (May 2018)
+.fitted-pic[![whitepaper](assets/images/parsec_whitepaper.png)]
+
+---
+template: sea_3
+# Working code (July 2018)
+.fitted-pic[![code](assets/images/parsec_code.png)]
+
+---
+template: sea_2
+# Production ready (WIP)
+.fitted-pic[![prod](assets/images/production.jpg)]
+
+---
+template: sea_3
+# Rust
+.fitted-pic[![rust](assets/images/ferris.png)]
+
+---
+template: sea_2
+# Trifecta (obviously)
+.center.fitted-pic[![rust](assets/images/trifecta.jpg)]
+
+???
+We're started using rust for the same reasons everyone does:
+The holy trifecta:
+Peanut butter and jelly and more peanut butter
+* Speed
+* Security
+* Concurrency
+
+Our values:
+* Security
+* Inclusiveness (== Speed)
+
+---
+template: sea_3
+# An ecosystem
+.fitted-pic[![ecosystem](assets/images/ecosystem.jpg)]
+
+???
+Beyond the obvious trifecta, what we discovered by working with rust over time is that there is an entire ecosystem at play that will conspire to making your project successful.
+Also, importantly for us, this ecosystem crucially share our values.
+
+---
+template: sea
+
+## .grey_text[Some context]
+## Collaboration/Openness
+## .grey_text[Privacy/Security]
+## .grey_text[Inclusiveness/Respect]
+
+---
+template: sparks_2
+# Community
+
+.fitted-pic[![ecosystem](assets/images/rust_community.jpg)]
+???
+## Story time
+- RFC process (that we use too)
+- How I went to rustfest Paris and Rome, London meetup, inspirational
+
+---
+template: sparks
+# Open by default
+
+.fitted-pic[![ecosystem](assets/images/crates.jpg)]
+
+???
+- How we got the Parsec crate
+## Libraries
+crates.io
+serde, clap, nom
+TODO: detail our use of each of them and how they help us achieve our goals
+
+Easy to specify license in Cargo.toml
+Our crates are all GPL-v3
+
+---
+template: sparks_2
+# `cargo clippy`
+
+```
+error: this argument is passed by reference,
+       but would be more efficient if passed
+       by value
+--> src/meta_voting/bool_set.rs:37:33
+  |
+37| pub fn contains(&self, val: &bool) -> bool {
+  |                             ^^^^^
+  |           help: consider passing by value
+  |                 instead: `bool`
+  |
+  = note: #[forbid(trivially_copy_pass_by_ref)]
+```
+
+---
+template: sparks_2
+count: false
+# `cargo clippy`
+
+.fitted-pic[![clippy](assets/images/clippy_lint.png)]
+---
+template: sparks_2
+count: false
+# `cargo clippy`
+
+
+```
+*-    fn contains(&self, val: &bool) -> bool {
+*+    fn contains(&self, val: bool) -> bool {
+        match *self {
+           BoolSet::Empty => false,
+*-          BoolSet::Single(ref s) => *s == *val,
+*+          BoolSet::Single(ref s) => *s == val,
+           BoolSet::Both => true,
+        }
+     }
+```
+
+???
+Collaboration:
+It's like writing code and having the entire rust community standing over your shoulder for code review.
+
+Integrate it in your CI and make it fail the build.
+
+---
+template: sparks_4
+# `cargo fmt`
+
+.fitted-pic[![spaces_tabs](assets/images/space_tabs.gif)]
+
+
+---
+template: sparks_2
+#Rust Language Server
+
+.fitted-pic[![real programmers](assets/images/real_programmers.png)]
+
+---
+template: sparks_3
+# Do yourself a favour!
+
+--
+count: false
+```
+rustup component add clippy-preview
+```
+
+--
+count: false
+```
+rustup component add rustfmt-preview
+```
+
+--
+count: false
+```
+rustup component add rls-preview
+```
+
+--
+count: false
+## 💗 2018 *#YOLO*
+
+---
+template: sea
+
+## .grey_text[Some context]
+## .grey_text[Collaboration/Openness]
+## Privacy/Security
+## .grey_text[Inclusiveness/Respect]
+
+---
+template: fields
+
+# Borrow checker
+
+.fitted-pic[![borrow checker](assets/images/borrow_checker.png)]
+
+---
+template: fields_3
+
+# Did I mention clippy?
+
+.fitted-pic[![clippy](assets/images/clippy.png)]
+
+---
+template: fields_2
+
+# Functional testing
+
+.fitted-pic[![alice](assets/images/alice.dot.svg)]
+
+???
+We think of the pb in terms of graphs
+
+---
+template: fields_2
+count: false
+
+# Functional testing
+
+
+```
+digraph GossipGraph {
+...
+  subgraph cluster_Alice {
+    ...
+    "A_0" -> "A_1"
+    "A_1" -> "A_2"
+    "A_2" -> "A_3"
+    ...
+  }
+  "C_1" -> "A_2"
+  "D_2" -> "A_3"
+...
+}
+```
+
+???
+
+We express these graphs in dot format
+* J-F-Liu/pom (PEG parser)
+
+---
+template: fields_2
+count: false
+
+# Functional testing
+
+```
+#[test]
+fn test_that_fits_in_a_slide() {
+  let parsed = parse_test_dot_file("alice.dot");
+  let alice = Parsec::from_parsed(parsed);
+
+  let fred = PeerId::new("Fred");
+
+  assert!(!alice
+           .peer_list
+           .all_ids()
+           .any(|peer| *peer == fred));
+}
+
+```
+
+---
+template: fields_4
+
+# Integration testing
+
+```
+#[test]
+fn add_many_peers() {
+  let mut env = Environment::new(SEED);
+
+  let options = Schedule::new(
+    &mut env,
+    &ScheduleOptions {
+        genesis_size: 2,
+        peers_to_add: 8,
+        opaque_to_add: 0,
+        ..Default::default()
+    },
+  );
+
+  unwrap!(env.network.execute_schedule(options));
+}
+```
+
+---
+template: fields_3
+
+# Property testing
+
+```
+opts: ScheduleOptionsStrategy {
+  num_peers: (4..=10).into(),
+  num_observations: (1..=10).into(),
+  local_step: (0.01..=1.0).into(),
+  recv_trans: (0.001..0.5).into(),
+  failure: (0.0..1.0).into(),
+  vote_duplication: (0.0..0.5).into(),
+  delay_distr: arbitrary_delay(0..10, 0.0..10.0),
+}
+```
+
+---
+template: fields_2
+
+# safe_crypto
+
+.fitted-pic[![crypto](assets/images/crypto.jpg)]
+
+???
+
+* Abstraction over cryptographic primitives
+* Currently wraps around rust_sodium
+* Bindings to libsodium
+* Eventually, migrate to dalek, pure rust
+
+---
+template: sea
+
+## .grey_text[Some context]
+## .grey_text[Collaboration/Openness]
+## .grey_text[Privacy/Security]
+## Inclusiveness/Respect
+
+---
+template: birds
+# Code of conduct
+
+> * We are committed to providing a **friendly**, **safe** and<br>
+>   **welcoming** environment for **all**, regardless of level<br>
+>   of experience, gender identity and expression,<br>
+>   sexual orientation, disability, personal appearance,<br>
+>   body size, race, ethnicity, age, religion,<br>
+>   nationality, or other similar characteristic.
+> * [...]
+
+---
+template: birds_2
+count: false
+# Rust respects the programmer
+
+> "Regardless of level of experience"
+
+--
+count: false
+
+* Educates the noob
+
+???
+With great diagnostics
+--
+count: false
+
+* Enables the expert
+
+???
+By keeping abstractions relatively low level (memory management)
+
+C++: hurts the noob (you do learn from pain)
+GC-ed languages: hurts the expert by hiding too much
+
+---
+template: birds_3
+# Did I mention clippy?
+
+.fitted-pic[![clippy](assets/images/clippy.png)]
+
+---
+template: birds_4
+# Rust respects the user
+
+.fitted-pic[![clippy](assets/images/human_rights.png)]
+
+???
+* Safety
+
+* Performance
+
+* Concurrency
+
+Not a bonus. Our digital human rights
+
+---
+template: birds
+# Documentation ethics
+
+.fitted-pic[![doc](assets/images/documentation.png)]
+
+???
+Big mark of respect from community members
+Excellent documentation in the language and in popular libraries
+Easy to document your code with ///
+Inclusiveness
+
+Anyone can join in
+
+---
+template: birds_3
+# Performance
+
+.fitted-pic[![performance](assets/images/roadster.jpg)]
+
+???
+Zero-cost abstractions
+
+---
+template: birds_3
+# Flamegraphs
+
+.fitted-pic[![flame](assets/images/flame.svg)]
+
+
+---
+template: the_end
+# Credits
+#### Routing team
+Adam Cigánek<br>
+Bartłomiej Kamiński<br>
+Fraser Hutchison<br>
+Jean-Philippe Dufraigne<br>
+Jon Häggblad<br>
+Qi Ma<br>
 ---
 template: the_end
 # Thank you!
 .center[
+.small-pic[![rust](assets/images/ferris.png)]
+.small-pic[![mozilla](assets/images/mozilla.png)]
 .small-pic[![maidsafe](assets/images/maidsafe_logo.png)]
 <br>
 ]
 ???
----
-.center[
-# [Gossip graph](assets/images/Carol-008.dot.svg)
-# [Whitepaper](assets/PARSEC.pdf)
-]
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
